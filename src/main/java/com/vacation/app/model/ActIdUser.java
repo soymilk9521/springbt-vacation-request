@@ -2,6 +2,7 @@ package com.vacation.app.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -36,6 +37,19 @@ public class ActIdUser implements Serializable {
 
 	@Column(name="REV_")
 	private int rev;
+
+	//bi-directional many-to-many association to ActIdGroup
+	@ManyToMany
+	@JoinTable(
+		name="act_id_membership"
+		, joinColumns={
+			@JoinColumn(name="USER_ID_")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="GROUP_ID_")
+			}
+		)
+	private List<ActIdGroup> actIdGroups;
 
 	public ActIdUser() {
 	}
@@ -94,6 +108,14 @@ public class ActIdUser implements Serializable {
 
 	public void setRev(int rev) {
 		this.rev = rev;
+	}
+
+	public List<ActIdGroup> getActIdGroups() {
+		return this.actIdGroups;
+	}
+
+	public void setActIdGroups(List<ActIdGroup> actIdGroups) {
+		this.actIdGroups = actIdGroups;
 	}
 
 }

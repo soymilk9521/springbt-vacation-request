@@ -2,6 +2,7 @@ package com.vacation.app.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -27,6 +28,10 @@ public class ActIdGroup implements Serializable {
 
 	@Column(name="TYPE_")
 	private String type;
+
+	//bi-directional many-to-many association to ActIdUser
+	@ManyToMany(mappedBy="actIdGroups")
+	private List<ActIdUser> actIdUsers;
 
 	public ActIdGroup() {
 	}
@@ -61,6 +66,14 @@ public class ActIdGroup implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<ActIdUser> getActIdUsers() {
+		return this.actIdUsers;
+	}
+
+	public void setActIdUsers(List<ActIdUser> actIdUsers) {
+		this.actIdUsers = actIdUsers;
 	}
 
 }
