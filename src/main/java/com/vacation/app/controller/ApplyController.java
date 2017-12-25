@@ -1,6 +1,7 @@
 package com.vacation.app.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ApplyController {
 	
 	@RequestMapping("/apply")
-	public String apply() {
+	public String apply(Model model) {
 		return "apply";
 	}
 }
