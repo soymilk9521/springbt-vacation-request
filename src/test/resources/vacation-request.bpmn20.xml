@@ -27,11 +27,11 @@
         </activiti:formProperty>
         <activiti:formProperty id="managerMotivation" name="Motivation" type="string" />
       </extensionElements>
-<!--       <potentialOwner> -->
-<!--         <resourceAssignmentExpression> -->
-<!--           <formalExpression>management</formalExpression> -->
-<!--         </resourceAssignmentExpression> -->
-<!--       </potentialOwner> -->
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>management</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
     </userTask>
     <sequenceFlow id="flow2" sourceRef="handleRequest" targetRef="requestApprovedDecision" />
 

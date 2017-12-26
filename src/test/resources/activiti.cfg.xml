@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+
+	<property name="dataSource" ref="dataSource" />
+	<!-- Activiti will automatically upgrade the DB schema to the newer version 
+     the first time when it notices that libraries and DB schema are out of sync. -->
+	<property name="databaseSchemaUpdate" value="true" />
+	<!-- 	The component that manages a thread pool to fire timers and other asynchronous tasks. -->
+	<property name="asyncExecutorActivate" value="true" />
+  </bean>
+	
+  <!--   Mysql config -->
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+	  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	  <property name="url" value="jdbc:mysql://localhost:3306/activitidemo" />
+	  <property name="username" value="root" />
+	  <property name="password" value="root" />
+	  <property name="defaultAutoCommit" value="true" />
+  </bean>
+
+</beans>

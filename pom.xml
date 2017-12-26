@@ -66,11 +66,11 @@
 			<artifactId>activiti-spring-boot-starter-actuator</artifactId>
 			<version>${activiti.version}</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 	        <groupId>org.activiti</groupId> -->
-<!-- 	        <artifactId>activiti-spring-boot-starter-rest-api</artifactId> -->
-<!-- 	        <version>${activiti.version}</version> -->
-<!-- 	    </dependency> -->
+		<dependency>
+	        <groupId>org.activiti</groupId>
+	        <artifactId>activiti-spring-boot-starter-rest-api</artifactId>
+	        <version>${activiti.version}</version>
+	    </dependency>
 	    <dependency>
 	        <groupId>org.activiti</groupId>
 	        <artifactId>activiti-spring-boot-starter-jpa</artifactId>

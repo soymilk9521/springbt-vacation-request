@@ -4,18 +4,26 @@ import java.util.Date;
 
 public class ApplyForm {
 	private Long numberOfDays;
-	private Date startDate;
+	private String startDate;
 	private String vacationMotivation;
+	private String employeeName;
+	
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
 	public Long getNumberOfDays() {
 		return numberOfDays;
 	}
 	public void setNumberOfDays(Long numberOfDays) {
 		this.numberOfDays = numberOfDays;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	public String getVacationMotivation() {
