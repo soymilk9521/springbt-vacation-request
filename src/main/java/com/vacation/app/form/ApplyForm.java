@@ -1,13 +1,30 @@
 package com.vacation.app.form;
 
-import java.util.Date;
+import java.util.List;
+
+import com.vacation.app.model.ActIdGroup;
+import com.vacation.app.model.ActIdUser;
 
 public class ApplyForm {
 	private Long numberOfDays;
 	private String startDate;
 	private String vacationMotivation;
 	private String employeeName;
-	
+	private List<ActIdUser> userList;
+	private List<ActIdGroup> groupList;
+		
+	public List<ActIdGroup> getGroupList() {
+		return groupList;
+	}
+	public void setGroupList(List<ActIdGroup> groupList) {
+		this.groupList = groupList;
+	}
+	public List<ActIdUser> getUserList() {
+		return userList;
+	}
+	public void setUserList(List<ActIdUser> userList) {
+		this.userList = userList;
+	}
 	public String getEmployeeName() {
 		return employeeName;
 	}

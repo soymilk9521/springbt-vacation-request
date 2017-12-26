@@ -57,17 +57,22 @@
 <body>
 	<div class="content">
 		<h1>Approve List</h1>
-		<div th:if="${tasks.size()> 0}">
-			<div th:each="task: ${tasks}" >
-				<input type="text" th:value="${task.getDescription()}" />
-				<input type="text" th:value="${task.getName()}" />
-				<input type="text" th:value="${task.getOwner()}" />
-				<input type="text" th:value="${task.getAssignee()}" />
-				<input type="text" th:value="${task.getCategory()}" />
-				<input type="text" th:value="${task.getDueDate()}" />
-				<input type="button" value="approve" />
-			</div>
-		</div>
+		<form action="/apply" th:action="@{/apply}" th:object="${form}" method="post">
+			<select th:if=" *{userList != null}" th:name="employeeName">
+				<option th:each="user : *{userList}" th:value="${user.getId()}" th:text="${user.getFirst() + ' ' + user.getLast()}"></option>
+			</select>
+		</form>
+<!-- 		<div th:if="${tasks.size()> 0}"> -->
+<!-- 			<div th:each="task: ${tasks}" > -->
+<!-- 				<input type="text" th:value="${task.getDescription()}" /> -->
+<!-- 				<input type="text" th:value="${task.getName()}" /> -->
+<!-- 				<input type="text" th:value="${task.getOwner()}" /> -->
+<!-- 				<input type="text" th:value="${task.getAssignee()}" /> -->
+<!-- 				<input type="text" th:value="${task.getCategory()}" /> -->
+<!-- 				<input type="text" th:value="${task.getDueDate()}" /> -->
+<!-- 				<input type="button" value="approve" /> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 </body>
 </html>
