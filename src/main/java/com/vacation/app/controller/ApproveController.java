@@ -44,15 +44,13 @@ public class ApproveController {
 
 	@RequestMapping(value = "approve", method = RequestMethod.GET)
 	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form) {
-
 		List<ProcessInstance> instances = runtimeService.createProcessInstanceQuery().list();
 		List<Execution> executions = runtimeService.createExecutionQuery().list();
-		List<Task> tasks = taskService.createTaskQuery().list();
-
+		List<Task> tasks = taskService.createTaskQuery().active().list();
+		model.addAttribute("tasks", tasks);
 		logger.info("Number of process instances >>> " + instances.size());
 		logger.info("Number of tasks >>> " + tasks.size());
-		logger.info("Description of task >>> " + tasks.get(0).getDueDate());
-		// model.addAttribute("tasks", tasks);
+		logger.info("Number of executions >>> " + executions.size());
 		
 		// can approve users
 		ActIdGroup group = groupDao.findOne(CANDIDATE_GROUP_ID);

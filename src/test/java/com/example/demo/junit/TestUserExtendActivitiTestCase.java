@@ -1,4 +1,4 @@
-package com.example.demo.test;
+package com.example.demo.junit;
 
 import org.activiti.engine.task.Task;
 import org.activiti.engine.test.ActivitiTestCase;

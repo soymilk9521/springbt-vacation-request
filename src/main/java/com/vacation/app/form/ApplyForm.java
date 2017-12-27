@@ -9,10 +9,23 @@ public class ApplyForm {
 	private Long numberOfDays;
 	private String startDate;
 	private String vacationMotivation;
-	private String employeeName;
+	private String applyUserId;
+	private String applyUserName;
 	private List<ActIdUser> userList;
 	private List<ActIdGroup> groupList;
-		
+	
+	public String getApplyUserId() {
+		return applyUserId;
+	}
+	public void setApplyUserId(String applyUserId) {
+		this.applyUserId = applyUserId;
+	}
+	public String getApplyUserName() {
+		return applyUserName;
+	}
+	public void setApplyUserName(String applyUserName) {
+		this.applyUserName = applyUserName;
+	}
 	public List<ActIdGroup> getGroupList() {
 		return groupList;
 	}
@@ -24,12 +37,6 @@ public class ApplyForm {
 	}
 	public void setUserList(List<ActIdUser> userList) {
 		this.userList = userList;
-	}
-	public String getEmployeeName() {
-		return employeeName;
-	}
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
 	}
 	public Long getNumberOfDays() {
 		return numberOfDays;

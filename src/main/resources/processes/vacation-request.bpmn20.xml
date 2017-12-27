@@ -7,18 +7,18 @@
 
   <process id="vacationRequest" name="Vacation request">
 
-    <startEvent id="request" activiti:initiator="employeeName">
+    <startEvent id="request" activiti:initiator="applyUserId">
       <extensionElements>
-        <activiti:formProperty id="numberOfDays" name="Number of days" type="long" value="1" required="true"/>
-        <activiti:formProperty id="startDate" name="First day of holiday (dd-MM-yyy)" datePattern="dd-MM-yyyy hh:mm" type="date" required="true" />
+        <activiti:formProperty id="numberOfDays" name="Number of days"  required="true"/>
+        <activiti:formProperty id="startDate" name="First day of holiday (dd-MM-yyy)"  type="date" required="true" />
         <activiti:formProperty id="vacationMotivation" name="Motivation" type="string" />
       </extensionElements>
     </startEvent>
     <sequenceFlow id="flow1" sourceRef="request" targetRef="handleRequest" />
 
-    <userTask id="handleRequest" name="Handle vacation request" >
+    <userTask id="handleRequest" name="Handle vacation request" activiti:candidateGroups="group0002">
       <documentation>
-        ${employeeName} would like to take ${numberOfDays} day(s) of vacation (Motivation: ${vacationMotivation}).
+        ${applyUserName} would like to take ${numberOfDays} day(s) of vacation (Motivation: ${vacationMotivation}).
       </documentation>
       <extensionElements>
          <activiti:formProperty id="vacationApproved" name="Do you approve this vacation" type="enum" required="true">
@@ -27,11 +27,6 @@
         </activiti:formProperty>
         <activiti:formProperty id="managerMotivation" name="Motivation" type="string" />
       </extensionElements>
-<!--       <potentialOwner> -->
-<!--         <resourceAssignmentExpression> -->
-<!--           <formalExpression>management</formalExpression> -->
-<!--         </resourceAssignmentExpression> -->
-<!--       </potentialOwner> -->
     </userTask>
     <sequenceFlow id="flow2" sourceRef="handleRequest" targetRef="requestApprovedDecision" />
 
@@ -64,7 +59,7 @@
       </extensionElements>
       <humanPerformer>
         <resourceAssignmentExpression>
-          <formalExpression>${employeeName}</formalExpression>
+          <formalExpression>${applyUserId}</formalExpression>
         </resourceAssignmentExpression>
       </humanPerformer>
     </userTask>
