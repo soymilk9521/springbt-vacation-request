@@ -21,6 +21,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vacation.app.dao.ActIdUserDao;
@@ -49,7 +50,7 @@ public class ApplyController {
 
 	@Autowired
 	private ActIdUserDao userDao;
-	
+
 	@Autowired
 	private IdentityService identityService;
 
@@ -61,7 +62,8 @@ public class ApplyController {
 	 * @return
 	 */
 	@RequestMapping(value = "/apply", method = RequestMethod.GET)
-	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form) {
+	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
+			@RequestParam(value = "lang", required = false) String lang) {
 		logger.info(this.getClass().getSimpleName() + " >>> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		// set default form values
 		List<ActIdUser> users = userDao.findAll();
@@ -69,11 +71,12 @@ public class ApplyController {
 		form.setNumberOfDays(1L);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		form.setStartDate(sdf.format(new Date()));
+		model.addAttribute("lang", lang);
 		return "apply";
 	}
 
 	/**
-	 * vacation request apply 
+	 * vacation request apply
 	 * 
 	 * @param model
 	 * @param form
@@ -82,7 +85,8 @@ public class ApplyController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
-	public String apply(Model model, @ModelAttribute(value = "form") ApplyForm form, BindingResult result) {
+	public String apply(Model model, @ModelAttribute(value = "form") ApplyForm form, 
+			BindingResult result) {
 		logger.info(this.getClass().getSimpleName() + " >>> " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		if (!result.hasErrors()) {
 			ObjectMapper objMapper = new ObjectMapper();
@@ -94,8 +98,9 @@ public class ApplyController {
 			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(PROCESS_KEY, vars);
 			logger.info("process instance id >>> " + processInstance.getId());
 			// get tasks of process
-			List<Task> tasks = taskService.createTaskQuery().processInstanceId(processInstance.getProcessInstanceId()).list();
-			
+			List<Task> tasks = taskService.createTaskQuery().processInstanceId(processInstance.getProcessInstanceId())
+					.list();
+
 			String activityId = processInstance.getActivityId();
 			logger.info("activityId >>> " + activityId);
 			for (Task task : tasks) {

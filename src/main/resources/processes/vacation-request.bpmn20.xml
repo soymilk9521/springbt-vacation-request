@@ -18,7 +18,7 @@
 
     <userTask id="handleRequest" name="Handle vacation request" activiti:candidateGroups="group0002">
       <documentation>
-        ${applyUserName} would like to take ${numberOfDays} day(s) of vacation (Motivation: ${vacationMotivation}).
+        ${applyUserName} ${activitiForm.wouldlike} ${numberOfDays} day(s) of vacation (Motivation: ${vacationMotivation}).
       </documentation>
       <extensionElements>
          <activiti:formProperty id="vacationApproved" name="Do you approve this vacation" type="enum" required="true">

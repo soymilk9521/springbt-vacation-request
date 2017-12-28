@@ -11,9 +11,16 @@ public class ApplyForm {
 	private String vacationMotivation;
 	private String applyUserId;
 	private String applyUserName;
+	private String lanag;
 	private List<ActIdUser> userList;
 	private List<ActIdGroup> groupList;
 	
+	public String getLanag() {
+		return lanag;
+	}
+	public void setLanag(String lanag) {
+		this.lanag = lanag;
+	}
 	public String getApplyUserId() {
 		return applyUserId;
 	}

@@ -17,8 +17,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vacation.app.dao.ActIdGroupDao;
+import com.vacation.app.form.ActivitiForm;
 import com.vacation.app.form.ApplyForm;
 import com.vacation.app.model.ActIdGroup;
 import com.vacation.app.model.ActIdUser;
@@ -41,9 +43,14 @@ public class ApproveController {
 	
 	@Autowired
 	private ActIdGroupDao groupDao;
+	
+	@Autowired
+    public ActivitiForm activitiForm;
 
 	@RequestMapping(value = "approve", method = RequestMethod.GET)
-	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form) {
+	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
+			@RequestParam(value="lang", required=false) String lang) {
+		// System.setProperty("activiti.lang", "_" + lang);
 		List<ProcessInstance> instances = runtimeService.createProcessInstanceQuery().list();
 		List<Execution> executions = runtimeService.createExecutionQuery().list();
 		List<Task> tasks = taskService.createTaskQuery().active().list();
@@ -52,10 +59,13 @@ public class ApproveController {
 		logger.info("Number of tasks >>> " + tasks.size());
 		logger.info("Number of executions >>> " + executions.size());
 		
+		logger.info("test properties bean >>> " + activitiForm.getWouldlike());
+		
 		// can approve users
 		ActIdGroup group = groupDao.findOne(CANDIDATE_GROUP_ID);
 		List<ActIdUser> users = group.getActIdUsers();
 		form.setUserList(users);
+		model.addAttribute("lang", lang);
 		return "approve";
 	}
 
