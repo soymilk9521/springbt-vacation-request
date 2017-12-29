@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns           ="http://www.w3.org/1999/xhtml"
+      xmlns:th        ="http://www.thymeleaf.org"
+      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="common/common">
+<head>
+    <title>Top</title>
+</head>
+<body>
+    <div layout:fragment="content">
+    	<div class="container body-content"> 
+    		<p  class="text-right"><input type="submit" name="ctl00$MainContent$Button1" value="English" id="MainContent_Button1" class="btn btn-default" /></p>
+		    <div class="jumbotron">
+		        <h1>簡易決裁システム</h1>
+		        <p class="lead">簡易決裁システムでは各種申請、承認等が行えます。</p>
+		    </div>
+		    <div class="row">
+		        <div class="col-md-4">
+		            <h2> 申請</h2>
+		            <p>新規申請、申請の状況確認を行います。</p>
+		            <p>
+		                <a id="MainContent_HyperLink2" class="btn btn-default" href="./UI/A/A0100.aspx" >
+		                                        新規申請登録はこちら
+		                </a>
+		            </p>
+		        </div>
+		        <div class="col-md-4">
+		            <h2>承認</h2>
+		            <p>承認対象となる申請の状況確認を行います。</p>
+		            <p>
+		                <a id="MainContent_HyperLink3" class="btn btn-default" href="./UI/A/A1000.aspx" >
+		                                         承認状況の確認はこちら
+		               </a>
+		            </p>
+		        </div>
+		    </div>
+        </div>
+    </div>
+</body>
+</html>

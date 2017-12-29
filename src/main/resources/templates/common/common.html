@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns           ="http://www.w3.org/1999/xhtml"
+      xmlns:th        ="http://www.thymeleaf.org"
+      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+	<link rel="stylesheet" th:href="@{/css/site.css}" />
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+	<link rel="stylesheet" th:href="@{/css/custom.css}" />
+	<script th:src="@{/scripts/jquery-1.10.2.js}"></script>
+	<script th:src="@{/scripts/bootstrap.js}"></script>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="./" class="navbar-brand"> 簡易決裁システム</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    
+                            <div>
+                            <ul class="nav navbar-nav">
+                                <li><a href="./">TOP</a></li>
+                            </ul>
+                            </div>
+                        
+                            <div>
+                            <ul class="nav navbar-nav">
+                                <li><a href="UI/A/A0100">申請</a></li>
+                            </ul>
+                            </div>
+                        
+                            <div>
+                            <ul class="nav navbar-nav">
+                                <li><a href="UI/B/B1000">承認</a></li>
+                            </ul>
+                            </div>
+                        
+                            <div>
+                            <ul class="nav navbar-nav">
+                                <li><a href="UI/C/C1000">管理</a></li>
+                            </ul>
+                            </div>
+                        
+                    <div style="width:400px;margin-right:0px;margin-left: auto;padding-top: 5px;padding-bottom: 5px;color:white">
+                        <span id="Label1">001105 横＊＊ 姉＊＊ ＊＊<br />総務課</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- contents -->
+    <div layout:fragment="content" class="content">Contents is here!</div>
+
+    <!-- footer -->
+    <footer class="footer">
+    	<div align="center" class="container">
+     		<p class="text-muted">&copy; 2017 - 簡易決裁システム</p>
+    	</div>
+    </footer>
+</body>
+</html>
