@@ -1,14 +1,101 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>委任事項</title>
+<title>委任事項</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="C1000">検索</a></li>
+
+							<li><a href="C2000">委任事項</a></li>
+
+							<li><a href="C3000">管理者設定</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<h2>委任事項</h2>
+			<hr />
+			<p>委任する事項</p>
+			<table id="MainContent_ChildContent1_Table1"
+				class="table table-bordered">
+				<tr>
+					<th style="width: 20px;"></th>
+					<th style="width: 500px;">日本語</th>
+					<th style="width: 500px;">英語</th>
+				</tr>
+				<tr>
+					<td>①</td>
+					<td><textarea
+							name="ctl00$ctl00$MainContent$ChildContent1$TextBox1" rows="4"
+							cols="20" id="MainContent_ChildContent1_TextBox1"
+							style="width: 1000px;">
+①決裁基準規定別表第2に規定する一般権限のうち、100万円未満（消費税及び地方消費税含む）の「物品の取得請求・制作請求（修正、改造等を含む）」にかかる権限
+						</textarea></td>
+					<td><textarea
+							name="ctl00$ctl00$MainContent$ChildContent1$TextBox2" rows="4"
+							cols="20" id="MainContent_ChildContent1_TextBox2"
+							style="width: 1000px;">
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>②</td>
+					<td><textarea
+							name="ctl00$ctl00$MainContent$ChildContent1$TextBox3" rows="4"
+							cols="20" id="MainContent_ChildContent1_TextBox3"
+							style="width: 1000px;">
+②上記①に定めた権限のうち、web上ｄ購入申請を行う場合の物品取得請求権限
+						</textarea>
+					</td>
+					<td><textarea
+							name="ctl00$ctl00$MainContent$ChildContent1$TextBox4" rows="4"
+							cols="20" id="MainContent_ChildContent1_TextBox4"
+							style="width: 1000px;">
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>③</td>
+					<td><textarea
+							name="ctl00$ctl00$MainContent$ChildContent1$TextBox5" rows="4"
+							cols="20" id="MainContent_ChildContent1_TextBox5"
+							style="width: 1000px;">
+③上記①に定めた権限のうち、DNA合成の購入にかかる物品取得請求権限
+						</textarea>
+					</td>
+					<td><textarea
+							name="ctl00$ctl00$MainContent$ChildContent1$TextBox6" rows="4"
+							cols="20" id="MainContent_ChildContent1_TextBox6"
+							style="width: 1000px;">
+						</textarea>
+					</td>
+				</tr>
+			</table>
+
+
+			<hr />
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button3" value="変更"
+						id="MainContent_ChildContent1_Button3" class="btn btn-danger" />
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

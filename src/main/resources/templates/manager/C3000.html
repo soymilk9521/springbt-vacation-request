@@ -1,14 +1,287 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>管理者設定</title>
+<title>管理者設定</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="C1000">検索</a></li>
+
+							<li><a href="C2000">委任事項</a></li>
+
+							<li><a href="C3000">管理者設定</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<h2>管理者設定</h2>
+
+			<hr />
+			<div>
+				<table class="table table-bordered" cellspacing="0" rules="all"
+					border="1" id="MainContent_ChildContent1_GridView1"
+					style="border-collapse: collapse;">
+					<tr>
+						<th scope="col">&nbsp;</th>
+						<th scope="col">組織</th>
+						<th scope="col">氏名</th>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_0"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl02$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士太郎(課長)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_1"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl03$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士次郎(課員)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_2"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl04$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士三郎郎(主査)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_3"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl05$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士士朗(アシスタント)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_4"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl06$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士太郎(課長)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_5"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl07$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士次郎(課員)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_6"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl08$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士三郎郎(主査)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_7"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl09$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士士朗(アシスタント)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_8"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl10$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士太郎(課長)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input
+							id="MainContent_ChildContent1_GridView1_CheckBox1_9"
+							type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl11$CheckBox1" />
+						</td>
+						<td>総務課</td>
+						<td>富士次郎(課員)</td>
+					</tr>
+					<tr>
+						<td colspan="3"><table>
+								<tr>
+									<td><span>1</span></td>
+									<td><a
+										href="javascript:__doPostBack(&#39;ctl00$ctl00$MainContent$ChildContent1$GridView1&#39;,&#39;Page$2&#39;)">2</a></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+			</div>
+			<hr />
+
+			<p>追加管理者</p>
+			<p>
+			<table id="MainContent_ChildContent1_Table4"
+				class="table table-bordered">
+				<tr>
+					<th style="width: 80px;"></th>
+					<th style="width: 400px;">組織</th>
+					<th>氏名</th>
+				</tr>
+				<tr>
+					<td><input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$Button1"
+						value="選択" id="MainContent_ChildContent1_WebUserControl1_Button1" />
+						<!-- 2.モーダルの配置 -->
+						<div class="modal" id="modal-example" tabindex="-1">
+							<div class="modal-dialog modal-lg" style="width: 1000px;">
+
+								<!-- 3.モーダルのコンテンツ -->
+								<div class="modal-content">
+									<!-- 4.モーダルのヘッダ -->
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="modal-label">職員選択</h4>
+									</div>
+									<!-- 5.モーダルのボディ -->
+									<div class="modal-body">
+
+										<div
+											id="MainContent_ChildContent1_WebUserControl1_UpdatePanel1">
+
+											<table id="MainContent_ChildContent1_WebUserControl1_Table1">
+												<tr>
+													<td style="width: 600px;"><select
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList1"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList1\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_DropDownList1"
+														style="width: 600px;">
+															<option selected="selected" value=""></option>
+															<option value="100001">独立行政法人理化学研究所</option>
+
+													</select></td>
+												</tr>
+												<tr>
+													<td><select
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList2"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList2\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_DropDownList2"
+														style="width: 600px;">
+															<option selected="selected" value=""></option>
+
+													</select></td>
+												</tr>
+												<tr>
+													<td><select
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList3"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList3\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_DropDownList3"
+														style="width: 600px;">
+															<option selected="selected" value=""></option>
+
+													</select></td>
+												</tr>
+												<tr>
+													<td><select
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList4"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList4\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_DropDownList4"
+														style="width: 600px;">
+															<option selected="selected" value=""></option>
+
+													</select></td>
+												</tr>
+												<tr>
+													<td><select
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList5"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList5\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_DropDownList5"
+														style="width: 600px;">
+															<option selected="selected" value=""></option>
+
+													</select></td>
+												</tr>
+												<tr>
+													<td><select
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList6"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$DropDownList6\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_DropDownList6"
+														style="width: 600px;">
+															<option selected="selected" value=""></option>
+
+													</select></td>
+												</tr>
+												<tr>
+													<td><select size="4"
+														name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$ListBox1"
+														onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$ListBox1\&#39;,\&#39;\&#39;)&#39;, 0)"
+														id="MainContent_ChildContent1_WebUserControl1_ListBox1"
+														style="width: 600px;">
+															<option value=""></option>
+
+													</select></td>
+												</tr>
+											</table>
+
+										</div>
+									</div>
+									<!-- 6.モーダルのフッタ -->
+									<div class="modal-footer">
+										<input type="submit"
+											name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl1$Button3"
+											value="選択"
+											id="MainContent_ChildContent1_WebUserControl1_Button3"
+											class="btn btn-primary" />
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">閉じる</button>
+									</div>
+								</div>
+							</div>
+						</div></td>
+					<td><span id="MainContent_ChildContent1_Label13"> </span></td>
+					<td><span id="MainContent_ChildContent1_Label14"> </span></td>
+				</tr>
+			</table>
+			</p>
+			<hr />
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button5" value="追加"
+						id="MainContent_ChildContent1_Button5" class="btn btn-primary" />
+				</div>
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button1" value="削除"
+						id="MainContent_ChildContent1_Button1" class="btn btn-danger" />
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

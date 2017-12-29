@@ -1,14 +1,141 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>検索結果一覧</title>
+<title>検索結果一覧</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="C1000">検索</a></li>
+
+							<li><a href="C2000">委任事項</a></li>
+
+							<li><a href="C3000">管理者設定</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 一覧 -->
+
+			<h2>検索結果一覧</h2>
+			<hr />
+
+			<div>
+				<table class="table table-bordered" cellspacing="0" rules="all"
+					border="1" id="MainContent_ChildContent1_GridView1"
+					style="border-collapse: collapse;">
+					<tr>
+						<th scope="col">&nbsp;</th>
+						<th scope="col">年度</th>
+						<th scope="col">登録日</th>
+						<th scope="col">承認日</th>
+						<th scope="col">代理決裁者</th>
+						<th scope="col">決裁権者(承認者)</th>
+						<th scope="col">状況</th>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl02$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_0" />
+						</td>
+						<td>2017</td>
+						<td>2017/10/24</td>
+						<td>2017/10/30</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>完了</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl03$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_1" />
+						</td>
+						<td>2017</td>
+						<td>2017/09/24</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>未完了</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl04$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_2" />
+						</td>
+						<td>2017</td>
+						<td>2017/08/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>未完了</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl05$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_3" />
+						</td>
+						<td>2017</td>
+						<td>2017/07/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>未完了</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl06$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_4" />
+						</td>
+						<td>2017</td>
+						<td>2017/06/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>未完了</td>
+					</tr>
+					<tr>
+						<td colspan="7">
+							<table>
+								<tr>
+									<td><span>1</span></td>
+									<td><a
+										href="javascript:__doPostBack(&#39;ctl00$ctl00$MainContent$ChildContent1$GridView1&#39;,&#39;Page$2&#39;)">2</a></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<hr />
+			<p>
+				<input type="submit"
+					name="ctl00$ctl00$MainContent$ChildContent1$Button1" value="戻る"
+					id="MainContent_ChildContent1_Button1" class="btn btn-default" />
+			</p>
+			<!-- 詳細1 -->
+		</div>
+
 	</div>
 </body>
 </html>

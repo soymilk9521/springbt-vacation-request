@@ -1,14 +1,197 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>承認状況一覧</title>
+<title>承認状況一覧</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="B1000">承認状況一覧</a></li>
+
+							<li><a href="B2000">一括承認</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 一覧 -->
+
+			<h2>承認状況一覧</h2>
+			<hr />
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<span id="MainContent_ChildContent1_Label1">年度</span>
+				</div>
+				<div class="btn-group">
+					<select name="ctl00$ctl00$MainContent$ChildContent1$DropDownList1"
+						id="MainContent_ChildContent1_DropDownList1">
+						<option value=""></option>
+						<option selected="selected" value="2017">2017</option>
+						<option value="2016">2016</option>
+						<option value="2015">2015</option>
+						<option value="2014">2014</option>
+
+					</select>
+				</div>
+				<div class="btn-group">
+					<span id="MainContent_ChildContent1_Label4">承認状況</span>
+				</div>
+				<div class="btn-group">
+					<select name="ctl00$ctl00$MainContent$ChildContent1$DropDownList3"
+						id="MainContent_ChildContent1_DropDownList3">
+						<option value=""></option>
+						<option selected="selected" value="">承認待ち</option>
+						<option value="">承認済み</option>
+						<option value="">未着</option>
+						<option value="">完了</option>
+
+					</select>
+				</div>
+				<div class="btn-group">
+					<span id="MainContent_ChildContent1_Label2">代理決裁者</span>
+				</div>
+				<div class="btn-group">
+					<input name="ctl00$ctl00$MainContent$ChildContent1$TextBox1"
+						type="text" id="MainContent_ChildContent1_TextBox1" />
+				</div>
+				<div class="btn-group">
+					<span id="MainContent_ChildContent1_Label3">決裁権者(承認者)</span>
+				</div>
+				<div class="btn-group">
+					<input name="ctl00$ctl00$MainContent$ChildContent1$TextBox3"
+						type="text" id="MainContent_ChildContent1_TextBox3" />
+				</div>
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button1" value="再表示"
+						id="MainContent_ChildContent1_Button1" />
+				</div>
+			</div>
+			<div>
+				<table class="table table-bordered" cellspacing="0" rules="all"
+					border="1" id="MainContent_ChildContent1_GridView1"
+					style="border-collapse: collapse;">
+					<tr>
+						<th scope="col">&nbsp;</th>
+						<th scope="col">年度</th>
+						<th scope="col">登録日</th>
+						<th scope="col">決裁日</th>
+						<th scope="col">代理決裁者</th>
+						<th scope="col">決裁権者(承認者)</th>
+						<th scope="col">承認状況</th>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl02$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_0" />
+						</td>
+						<td>2017</td>
+						<td>2017/10/24</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>承認待ち</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl03$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_1" />
+						</td>
+						<td>2017</td>
+						<td>2017/09/24</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>承認待ち（差戻）</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl04$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_2" />
+						</td>
+						<td>2017</td>
+						<td>2017/08/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>承認待ち（引戻）</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl05$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_3" />
+						</td>
+						<td>2017</td>
+						<td>2017/07/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>承認待ち（引戻）</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl06$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_4" />
+						</td>
+						<td>2017</td>
+						<td>2017/06/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>承認済み</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl07$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_5" />
+						</td>
+						<td>2017</td>
+						<td>2017/05/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>未着</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl08$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_6" />
+						</td>
+						<td>2017</td>
+						<td>2017/04/10</td>
+						<td>2017/04/15</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>完了</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 詳細1 -->
+		</div>
 	</div>
 </body>
 </html>

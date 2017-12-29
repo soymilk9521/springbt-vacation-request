@@ -1,14 +1,97 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>検索</title>
+<title>検索</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="C1000">検索</a></li>
+
+							<li><a href="C2000">委任事項</a></li>
+
+							<li><a href="C3000">管理者設定</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<h2>検索</h2>
+			<hr />
+			<p>
+				<span id="MainContent_ChildContent1_Label1">年度</span>
+			</p>
+			<p>
+				<select name="ctl00$ctl00$MainContent$ChildContent1$DropDownList1"
+					id="MainContent_ChildContent1_DropDownList1">
+					<option value=""></option>
+					<option selected="selected" value="2017">2017</option>
+					<option value="2016">2016</option>
+					<option value="2015">2015</option>
+					<option value="2014">2014</option>
+
+				</select>
+			</p>
+
+			<p>
+				<span id="MainContent_ChildContent1_Label4">状況</span>
+			</p>
+			<p>
+				<select name="ctl00$ctl00$MainContent$ChildContent1$DropDownList3"
+					id="MainContent_ChildContent1_DropDownList3">
+					<option selected="selected" value=""></option>
+					<option value="">未完了</option>
+					<option value="">完了</option>
+
+				</select>
+			</p>
+			<p>
+				<span id="MainContent_ChildContent1_Label2">申請者</span>
+			</p>
+			<p>
+				<input name="ctl00$ctl00$MainContent$ChildContent1$TextBox1"
+					type="text" id="MainContent_ChildContent1_TextBox1" />
+			</p>
+			<p>
+				<span id="MainContent_ChildContent1_Label5">代理決裁者</span>
+			</p>
+			<p>
+				<input name="ctl00$ctl00$MainContent$ChildContent1$TextBox3"
+					type="text" id="MainContent_ChildContent1_TextBox3" />
+			</p>
+			<p>
+				<span id="MainContent_ChildContent1_Label6">決裁権者(承認者)</span>
+			</p>
+			<p>
+				<input name="ctl00$ctl00$MainContent$ChildContent1$TextBox4"
+					type="text" id="MainContent_ChildContent1_TextBox4" />
+			</p>
+			<hr />
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button4" value="検索"
+						id="MainContent_ChildContent1_Button4" class="btn btn-primary" />
+				</div>
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button2"
+						value="ダウンロード" id="MainContent_ChildContent1_Button2"
+						class="btn btn-info" />
+				</div>
+			</div>
+			<!-- 一覧 -->
+			<!-- 詳細1 -->
+		</div>
 	</div>
 </body>
 </html>

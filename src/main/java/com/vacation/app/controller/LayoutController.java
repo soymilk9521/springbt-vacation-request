@@ -16,7 +16,7 @@ public class LayoutController {
 		users.add(new User(1L,"karl"));
 		users.add(new User(2L, "harry"));
 		model.addAttribute("beans", users);
-		return "top";
+		return "manager/C3000";
 	}
 	
 	class User {

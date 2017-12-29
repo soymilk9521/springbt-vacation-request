@@ -1,14 +1,557 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>詳細(代理決裁)</title>
+<title>詳細(代理決裁)</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="A0100">新規申請</a></li>
+
+							<li><a href="A1000">申請済一覧</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--修正（目標設定）-->
+			<!--詳細（目標設定）-->
+
+			<h2>詳細(代理決裁)</h2>
+			<hr />
+			<p>委任期間</p>
+			<p>
+			<table id="MainContent_ChildContent1_Table3">
+				<tr>
+					<td><input
+						name="ctl00$ctl00$MainContent$ChildContent1$TextBox3" type="date"
+						value="2017/11/01" id="MainContent_ChildContent1_TextBox3"
+						disabled="disabled" class="aspNetDisabled" style="width: 100px;" /><input
+						type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button10" value="選択"
+						id="MainContent_ChildContent1_Button10" disabled="disabled"
+						class="aspNetDisabled" /> <!-- 2.モーダルの配置 -->
+						<div class="modal" id="modal-example3" tabindex="-1">
+							<div class="modal-dialog">
+
+								<!-- 3.モーダルのコンテンツ -->
+								<div class="modal-content">
+									<!-- 4.モーダルのヘッダ -->
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="modal-label">カレンダー</h4>
+									</div>
+									<!-- 5.モーダルのボディ -->
+									<div class="modal-body">
+										<div
+											id="MainContent_ChildContent1_WebUserControl4_UpdatePanel1">
+
+											<table
+												id="MainContent_ChildContent1_WebUserControl4_Calendar1"
+												cellspacing="0" cellpadding="2" title="カレンダー"
+												style="border-width: 1px; border-style: solid; border-collapse: collapse;">
+												<tr>
+													<td colspan="7" style="background-color: Silver;"><table
+															cellspacing="0"
+															style="width: 100%; border-collapse: collapse;">
+															<tr>
+																<td style="width: 15%;"><a
+																	href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','V6483')"
+																	style="color: Black" title="先月へ移動">&lt;</a></td>
+																<td align="center" style="width: 70%;">2017年11月</td>
+																<td align="right" style="width: 15%;"><a
+																	href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','V6544')"
+																	style="color: Black" title="来月へ移動">&gt;</a></td>
+															</tr>
+														</table></td>
+												</tr>
+												<tr>
+													<th align="center" abbr="日曜日" scope="col">日</th>
+													<th align="center" abbr="月曜日" scope="col">月</th>
+													<th align="center" abbr="火曜日" scope="col">火</th>
+													<th align="center" abbr="水曜日" scope="col">水</th>
+													<th align="center" abbr="木曜日" scope="col">木</th>
+													<th align="center" abbr="金曜日" scope="col">金</th>
+													<th align="center" abbr="土曜日" scope="col">土</th>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6511')"
+														style="color: Black" title="10月29日">29</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6512')"
+														style="color: Black" title="10月30日">30</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6513')"
+														style="color: Black" title="10月31日">31</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6514')"
+														style="color: Black" title="11月1日">1</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6515')"
+														style="color: Black" title="11月2日">2</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6516')"
+														style="color: Black" title="11月3日">3</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6517')"
+														style="color: Black" title="11月4日">4</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6518')"
+														style="color: Black" title="11月5日">5</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6519')"
+														style="color: Black" title="11月6日">6</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6520')"
+														style="color: Black" title="11月7日">7</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6521')"
+														style="color: Black" title="11月8日">8</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6522')"
+														style="color: Black" title="11月9日">9</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6523')"
+														style="color: Black" title="11月10日">10</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6524')"
+														style="color: Black" title="11月11日">11</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6525')"
+														style="color: Black" title="11月12日">12</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6526')"
+														style="color: Black" title="11月13日">13</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6527')"
+														style="color: Black" title="11月14日">14</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6528')"
+														style="color: Black" title="11月15日">15</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6529')"
+														style="color: Black" title="11月16日">16</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6530')"
+														style="color: Black" title="11月17日">17</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6531')"
+														style="color: Black" title="11月18日">18</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6532')"
+														style="color: Black" title="11月19日">19</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6533')"
+														style="color: Black" title="11月20日">20</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6534')"
+														style="color: Black" title="11月21日">21</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6535')"
+														style="color: Black" title="11月22日">22</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6536')"
+														style="color: Black" title="11月23日">23</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6537')"
+														style="color: Black" title="11月24日">24</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6538')"
+														style="color: Black" title="11月25日">25</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6539')"
+														style="color: Black" title="11月26日">26</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6540')"
+														style="color: Black" title="11月27日">27</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6541')"
+														style="color: Black" title="11月28日">28</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6542')"
+														style="color: Black" title="11月29日">29</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6543')"
+														style="color: Black" title="11月30日">30</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6544')"
+														style="color: Black" title="12月1日">1</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6545')"
+														style="color: Black" title="12月2日">2</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6546')"
+														style="color: Black" title="12月3日">3</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6547')"
+														style="color: Black" title="12月4日">4</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6548')"
+														style="color: Black" title="12月5日">5</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6549')"
+														style="color: Black" title="12月6日">6</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6550')"
+														style="color: Black" title="12月7日">7</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6551')"
+														style="color: Black" title="12月8日">8</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl4$Calendar1','6552')"
+														style="color: Black" title="12月9日">9</a></td>
+												</tr>
+											</table>
+
+										</div>
+									</div>
+									<!-- 6.モーダルのフッタ -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">閉じる</button>
+									</div>
+								</div>
+							</div>
+						</div></td>
+					<td>～</td>
+					<td><input
+						name="ctl00$ctl00$MainContent$ChildContent1$TextBox5" type="date"
+						value="2017/12/31" id="MainContent_ChildContent1_TextBox5"
+						disabled="disabled" class="aspNetDisabled" style="width: 100px;" /><input
+						type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button11" value="選択"
+						id="MainContent_ChildContent1_Button11" disabled="disabled"
+						class="aspNetDisabled" /> <!-- 2.モーダルの配置 -->
+						<div class="modal" id="modal-example3" tabindex="-1">
+							<div class="modal-dialog">
+
+								<!-- 3.モーダルのコンテンツ -->
+								<div class="modal-content">
+									<!-- 4.モーダルのヘッダ -->
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="modal-label">カレンダー</h4>
+									</div>
+									<!-- 5.モーダルのボディ -->
+									<div class="modal-body">
+										<div
+											id="MainContent_ChildContent1_WebUserControl9_UpdatePanel1">
+
+											<table
+												id="MainContent_ChildContent1_WebUserControl9_Calendar1"
+												cellspacing="0" cellpadding="2" title="カレンダー"
+												style="border-width: 1px; border-style: solid; border-collapse: collapse;">
+												<tr>
+													<td colspan="7" style="background-color: Silver;"><table
+															cellspacing="0"
+															style="width: 100%; border-collapse: collapse;">
+															<tr>
+																<td style="width: 15%;"><a
+																	href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','V6483')"
+																	style="color: Black" title="先月へ移動">&lt;</a></td>
+																<td align="center" style="width: 70%;">2017年11月</td>
+																<td align="right" style="width: 15%;"><a
+																	href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','V6544')"
+																	style="color: Black" title="来月へ移動">&gt;</a></td>
+															</tr>
+														</table></td>
+												</tr>
+												<tr>
+													<th align="center" abbr="日曜日" scope="col">日</th>
+													<th align="center" abbr="月曜日" scope="col">月</th>
+													<th align="center" abbr="火曜日" scope="col">火</th>
+													<th align="center" abbr="水曜日" scope="col">水</th>
+													<th align="center" abbr="木曜日" scope="col">木</th>
+													<th align="center" abbr="金曜日" scope="col">金</th>
+													<th align="center" abbr="土曜日" scope="col">土</th>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6511')"
+														style="color: Black" title="10月29日">29</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6512')"
+														style="color: Black" title="10月30日">30</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6513')"
+														style="color: Black" title="10月31日">31</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6514')"
+														style="color: Black" title="11月1日">1</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6515')"
+														style="color: Black" title="11月2日">2</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6516')"
+														style="color: Black" title="11月3日">3</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6517')"
+														style="color: Black" title="11月4日">4</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6518')"
+														style="color: Black" title="11月5日">5</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6519')"
+														style="color: Black" title="11月6日">6</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6520')"
+														style="color: Black" title="11月7日">7</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6521')"
+														style="color: Black" title="11月8日">8</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6522')"
+														style="color: Black" title="11月9日">9</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6523')"
+														style="color: Black" title="11月10日">10</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6524')"
+														style="color: Black" title="11月11日">11</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6525')"
+														style="color: Black" title="11月12日">12</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6526')"
+														style="color: Black" title="11月13日">13</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6527')"
+														style="color: Black" title="11月14日">14</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6528')"
+														style="color: Black" title="11月15日">15</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6529')"
+														style="color: Black" title="11月16日">16</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6530')"
+														style="color: Black" title="11月17日">17</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6531')"
+														style="color: Black" title="11月18日">18</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6532')"
+														style="color: Black" title="11月19日">19</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6533')"
+														style="color: Black" title="11月20日">20</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6534')"
+														style="color: Black" title="11月21日">21</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6535')"
+														style="color: Black" title="11月22日">22</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6536')"
+														style="color: Black" title="11月23日">23</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6537')"
+														style="color: Black" title="11月24日">24</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6538')"
+														style="color: Black" title="11月25日">25</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6539')"
+														style="color: Black" title="11月26日">26</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6540')"
+														style="color: Black" title="11月27日">27</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6541')"
+														style="color: Black" title="11月28日">28</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6542')"
+														style="color: Black" title="11月29日">29</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6543')"
+														style="color: Black" title="11月30日">30</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6544')"
+														style="color: Black" title="12月1日">1</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6545')"
+														style="color: Black" title="12月2日">2</a></td>
+												</tr>
+												<tr>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6546')"
+														style="color: Black" title="12月3日">3</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6547')"
+														style="color: Black" title="12月4日">4</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6548')"
+														style="color: Black" title="12月5日">5</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6549')"
+														style="color: Black" title="12月6日">6</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6550')"
+														style="color: Black" title="12月7日">7</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6551')"
+														style="color: Black" title="12月8日">8</a></td>
+													<td align="center" style="width: 14%;"><a
+														href="javascript:__doPostBack('ctl00$ctl00$MainContent$ChildContent1$WebUserControl9$Calendar1','6552')"
+														style="color: Black" title="12月9日">9</a></td>
+												</tr>
+											</table>
+
+										</div>
+									</div>
+									<!-- 6.モーダルのフッタ -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">閉じる</button>
+									</div>
+								</div>
+							</div>
+						</div></td>
+					<td style="width: 20px;"></td>
+					<td></td>
+				</tr>
+			</table>
+
+			</p>
+
+			<p>決裁ルート</p>
+			<p>
+			<table id="MainContent_ChildContent1_Table4"
+				class="table table-bordered">
+				<tr>
+					<th style="width: 70px;"></th>
+					<th>承認順位</th>
+					<th>組織</th>
+					<th>氏名</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td>1申請者</td>
+					<td><span id="MainContent_ChildContent1_Label3">総務部</span></td>
+					<td><span id="MainContent_ChildContent1_Label5">宍＊＊ 博＊＊
+							＊＊(部長)</span></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="ctl00$ctl00$MainContent$ChildContent1$WebUserControl5$Button1" value="選択" id="MainContent_ChildContent1_WebUserControl5_Button1" /></td>
+					<td>2代理決裁者</td>
+					<td><span id="MainContent_ChildContent1_Label13">総務部</span></td>
+					<td><span id="MainContent_ChildContent1_Label14">宍＊＊
+							博＊＊ ＊＊(部長)</span></td>
+				</tr>
+				<tr>
+					<td>〇</td>
+					<td>3決裁権者(承認者)</td>
+					<td><span id="MainContent_ChildContent1_Label15">総務部</span></td>
+					<td><span id="MainContent_ChildContent1_Label16">宍＊＊
+							博＊＊ ＊＊(部長)</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>4総務部審査者</td>
+					<td><span id="MainContent_ChildContent1_Label17">総務部</span></td>
+					<td><span id="MainContent_ChildContent1_Label18">宍＊＊
+							博＊＊ ＊＊(部長)</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>5総務部長</td>
+					<td><span id="MainContent_ChildContent1_Label19">総務部</span></td>
+					<td><span id="MainContent_ChildContent1_Label20">宍＊＊
+							博＊＊ ＊＊(部長)</span></td>
+				</tr>
+			</table>
+			</p>
+			<p>委任する事項</p>
+			<p>
+			<table id="MainContent_ChildContent1_CheckBoxList2"
+				class="aspNetDisabled">
+				<tr>
+					<td><span class="aspNetDisabled"><input
+							id="MainContent_ChildContent1_CheckBoxList2_0" type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$CheckBoxList2$0"
+							checked="checked" disabled="disabled" value="1" /><label
+							for="MainContent_ChildContent1_CheckBoxList2_0">①決裁基準規定別表第2に規定する一般権限のうち、100万円未満（消費税及び地方消費税含む）の「物品の取得請求・制作請求（修正、改造等を含む）」にかかる権限</label></span></td>
+				</tr>
+				<tr>
+					<td><span class="aspNetDisabled"><input
+							id="MainContent_ChildContent1_CheckBoxList2_1" type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$CheckBoxList2$1"
+							checked="checked" disabled="disabled" value="2" /><label
+							for="MainContent_ChildContent1_CheckBoxList2_1">②上記①に定めた権限のうち、web上ｄ購入申請を行う場合の物品取得請求権限</label></span></td>
+				</tr>
+				<tr>
+					<td><span class="aspNetDisabled"><input
+							id="MainContent_ChildContent1_CheckBoxList2_2" type="checkbox"
+							name="ctl00$ctl00$MainContent$ChildContent1$CheckBoxList2$2"
+							checked="checked" disabled="disabled" value="3" /><label
+							for="MainContent_ChildContent1_CheckBoxList2_2">③上記①に定めた権限のうち、DNA合成の購入にかかる物品取得請求権限</label></span></td>
+				</tr>
+			</table>
+			</p>
+			<p>コメント</p>
+			<p>
+				<textarea name="ctl00$ctl00$MainContent$ChildContent1$TextBox6"
+					rows="5" cols="20" id="MainContent_ChildContent1_TextBox6"
+					style="width: 600px;">
+				</textarea>
+			</p>
+			<hr />
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button2" value="再提出"
+						id="MainContent_ChildContent1_Button2" class="btn btn-primary" />
+				</div>
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button3" value="削除"
+						id="MainContent_ChildContent1_Button3" class="btn btn-danger" />
+				</div>
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button5" value="引戻"
+						id="MainContent_ChildContent1_Button5" class="btn btn-warning" />
+				</div>
+				<div class="btn-group">
+					<input type="submit"
+						name="ctl00$ctl00$MainContent$ChildContent1$Button9" value="戻る"
+						id="MainContent_ChildContent1_Button9" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

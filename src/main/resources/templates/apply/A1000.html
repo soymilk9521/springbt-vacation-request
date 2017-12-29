@@ -1,14 +1,127 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="common/common">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="common/common">
 <head>
-    <title>申請済一覧</title>
+<title>申請済一覧</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	
+		<div class="container body-content">
+
+			<div>
+				<div class="container">
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li><a href="A0100">新規申請</a></li>
+
+							<li><a href="A1000">申請済一覧</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<h2>申請済一覧</h2>
+			<hr />
+			<div id="MainContent_ChildContent1_Panel1">
+				<div class="btn-toolbar">
+					<div class="btn-group">
+						<span id="MainContent_ChildContent1_Label1">年度</span>
+					</div>
+					<div class="btn-group">
+						<select name="ctl00$ctl00$MainContent$ChildContent1$DropDownList1"
+							id="MainContent_ChildContent1_DropDownList1">
+							<option value=""></option>
+							<option selected="selected" value="2017">2017</option>
+							<option value="2016">2016</option>
+							<option value="2015">2015</option>
+							<option value="2014">2014</option>
+						</select>
+					</div>
+					<div class="btn-group">
+						<input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$Button1" value="再表示"
+							id="MainContent_ChildContent1_Button1" />
+					</div>
+				</div>
+			</div>
+			<div>
+				<table class="table table-bordered" cellspacing="0" rules="all"
+					border="1" id="MainContent_ChildContent1_GridView1"
+					style="border-collapse: collapse;">
+					<tr>
+						<th scope="col">&nbsp;</th>
+						<th scope="col">年度</th>
+						<th scope="col">登録日</th>
+						<th scope="col">決裁日</th>
+						<th scope="col">代理決裁者</th>
+						<th scope="col">決裁権者(承認者)</th>
+						<th scope="col">申請状況</th>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl02$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_0" />
+						</td>
+						<td>2017</td>
+						<td>2017/10/24</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>申請待ち(差戻)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl03$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_1" />
+						</td>
+						<td>2017</td>
+						<td>2017/09/24</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>申請待ち(引戻)</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl04$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_2" />
+						</td>
+						<td>2017</td>
+						<td>2017/08/10</td>
+						<td>&nbsp;</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>申請済</td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"><input type="submit"
+							name="ctl00$ctl00$MainContent$ChildContent1$GridView1$ctl05$CmdButton"
+							value="選択" id="MainContent_ChildContent1_GridView1_CmdButton_3" />
+						</td>
+						<td>2017</td>
+						<td>2017/04/10</td>
+						<td>2017/04/15</td>
+						<td>細胞機能研究チーム<br />岩** 哲** **(研究員)
+						</td>
+						<td>細胞機能研究チーム<br />杉＊＊ 慶＊＊ ＊＊(チームリーダー)
+						</td>
+						<td>完了</td>
+					</tr>
+				</table>
+			</div>
+			<!--修正（目標設定）-->
+			<!--詳細（目標設定）-->
+		</div>
 	</div>
 </body>
 </html>
