@@ -4,31 +4,51 @@
       xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="common/common">
 <head>
-    <title>Top</title>
+    <title th:text="#{common.header.top}">Top</title>
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    $(function () {
+    	 $("input[name=lang]").on('click', function(e){
+    		 if ($("input[name=lang]").val() === 'English') {
+    			 window.location.replace('?lang=en_US');
+    		 }else {
+    			 window.location.replace('?lang=ja_JP');
+    		 }
+    	 });    
+    	 
+    	 var lang = [[${lang}]];
+    	 if (lang === 'en_US') {
+    		 $("input[name=lang]").attr('value', '日本語');
+    	 }else {
+    		 $("input[name=lang]").attr('value', 'English');
+    	 }
+    });
+    /*]]>*/
+</script>
 </head>
 <body>
     <div layout:fragment="content">
     	<div class="container body-content"> 
-    		<p  class="text-right"><input type="submit" name="ctl00$MainContent$Button1" value="English" id="MainContent_Button1" class="btn btn-default" /></p>
+    		<p  class="text-right"><input type="button" name="lang" value="English" class="btn btn-default" /></p>
 		    <div class="jumbotron">
-		        <h1>簡易決裁システム</h1>
-		        <p class="lead">簡易決裁システムでは各種申請、承認等が行えます。</p>
+		        <h1 th:text="#{common.header.title}">簡易決裁システム</h1>
+		        <p class="lead" th:text="#{top.content.subtitle}">簡易決裁システムでは各種申請、承認等が行えます。</p>
 		    </div>
 		    <div class="row">
 		        <div class="col-md-4">
-		            <h2> 申請</h2>
-		            <p>新規申請、申請の状況確認を行います。</p>
+		            <h2 th:text="#{top.content.apply}"> 申請</h2>
+		            <p th:text="#{top.content.apply.explain}">新規申請、申請の状況確認を行います。</p>
 		            <p>
-		                <a id="MainContent_HyperLink2" class="btn btn-default" href="./UI/A/A0100.aspx" >
+		                <a id="MainContent_HyperLink2" class="btn btn-default" th:href="@{/A0100}" th:text="#{top.content.apply.link}">
 		                                        新規申請登録はこちら
 		                </a>
 		            </p>
 		        </div>
 		        <div class="col-md-4">
-		            <h2>承認</h2>
-		            <p>承認対象となる申請の状況確認を行います。</p>
+		            <h2 th:text="#{top.content.approve}">承認</h2>
+		            <p th:text="#{top.content.approve.explain}">承認対象となる申請の状況確認を行います。</p>
 		            <p>
-		                <a id="MainContent_HyperLink3" class="btn btn-default" href="./UI/A/A1000.aspx" >
+		                <a id="MainContent_HyperLink3" class="btn btn-default" th:href="@{/A1000}" th:text="#{top.content.apply.link}">
 		                                         承認状況の確認はこちら
 		               </a>
 		            </p>

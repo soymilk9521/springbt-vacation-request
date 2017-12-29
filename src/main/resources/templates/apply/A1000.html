@@ -14,11 +14,8 @@
 				<div class="container">
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-
-							<li><a href="A0100">新規申請</a></li>
-
-							<li><a href="A1000">申請済一覧</a></li>
-
+							<li><a th:href="@{/A0100}" th:text="#{common.nav.new.application}">新規申請</a></li>
+							<li><a th:href="@{/A1000}" th:text="#{common.nav.application.list}">申請済一覧</a></li>
 						</ul>
 					</div>
 				</div>

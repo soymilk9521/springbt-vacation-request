@@ -22,31 +22,31 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="./" class="navbar-brand"> 簡易決裁システム</a>
+                    <a th:href="@{/top}" class="navbar-brand" th:text="#{common.header.title}">簡易決裁システム</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     
                             <div>
                             <ul class="nav navbar-nav">
-                                <li><a href="./">TOP</a></li>
+                                <li><a th:href="@{/top}" th:text="#{common.header.top}">TOP</a></li>
                             </ul>
                             </div>
                         
                             <div>
                             <ul class="nav navbar-nav">
-                                <li><a href="UI/A/A0100">申請</a></li>
+                                <li><a th:href="@{/A0100}" th:text="#{common.header.apply}">申請</a></li>
                             </ul>
                             </div>
                         
                             <div>
                             <ul class="nav navbar-nav">
-                                <li><a href="UI/B/B1000">承認</a></li>
+                                <li><a th:href="@{B1000}" th:text="#{common.header.approve}">承認</a></li>
                             </ul>
                             </div>
                         
                             <div>
                             <ul class="nav navbar-nav">
-                                <li><a href="UI/C/C1000">管理</a></li>
+                                <li><a th:href="@{C1000}" th:text="#{common.header.manager}">管理</a></li>
                             </ul>
                             </div>
                         
@@ -59,12 +59,12 @@
     </header>
 
     <!-- contents -->
-    <div layout:fragment="content" class="content">Contents is here!</div>
+    <div layout:fragment="content" class="content"></div>
 
     <!-- footer -->
     <footer class="footer">
     	<div align="center" class="container">
-     		<p class="text-muted">&copy; 2017 - 簡易決裁システム</p>
+     		<p class="text-muted" th:text="'&copy; 2017 -' +  #{common.header.title}">&copy; 2017 - 簡易決裁システム</p>
     	</div>
     </footer>
 </body>

@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="common/common">
 <head>
-<title>申請区分選択</title>
+<title th:text="#{a0010.content.title}">申請区分選択</title>
 </head>
 <body>
 	<div layout:fragment="content">
@@ -14,37 +14,25 @@
 				<div class="container">
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="A0100">新規申請</a></li>
-							<li><a href="A1000">申請済一覧</a></li>
+							<li><a th:href="@{/A0100}" th:text="#{common.nav.new.application}">新規申請</a></li>
+							<li><a th:href="@{/A1000}" th:text="#{common.nav.application.list}">申請済一覧</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- navigation: end -->
 
-			<h2>申請区分選択</h2>
+			<h2 th:text="#{a0010.content.title}">申請区分選択</h2>
 			<hr />
 			<div class="row">
 				<div>
 					<div class="col-md-4">
-						<h2>代理決裁</h2>
-						<p>
-							決裁基準規定別表第2に規定する一般権限のうち、100万円未満（消費税及び地方消費税含む）の「物品の取得請求・制作請求（修正、改造等を含む）」にかかる権限の委任。
-						</p>
+						<h2 th:text="#{a0010.content.proxy.approval}">代理決裁</h2>
+						<p th:text="#{a0010.content.proxy.explain}"></p>
 						<p>
 							<a id="MainContent_ChildContent1_ListView1_LinkButton1_0"
-								class="btn btn-default"
-								href="javascript:__doPostBack(&#39;ctl00$ctl00$MainContent$ChildContent1$ListView1$ctrl0$LinkButton1&#39;,&#39;&#39;)">申請する</a>
-							<input type="hidden"
-								name="ctl00$ctl00$MainContent$ChildContent1$ListView1$ctrl0$HiddenField1"
-								id="MainContent_ChildContent1_ListView1_HiddenField1_0"
-								value="A010" /> <input type="hidden"
-								name="ctl00$ctl00$MainContent$ChildContent1$ListView1$ctrl0$HiddenField2"
-								id="MainContent_ChildContent1_ListView1_HiddenField2_0"
-								value="代理決裁" /> <input type="hidden"
-								name="ctl00$ctl00$MainContent$ChildContent1$ListView1$ctrl0$HiddenField3"
-								id="MainContent_ChildContent1_ListView1_HiddenField3_0"
-								value="Approval by proxy" />
+								class="btn btn-default" th:href="@{#}"
+								th:text="#{a0010.content.button.apply}">申請する</a>
 						</p>
 					</div>
 				</div>
