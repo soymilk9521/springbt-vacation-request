@@ -2,8 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Home</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Login</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<script th:src="@{/scripts/jquery-1.10.2.js}"></script>
+<script th:src="@{/scripts/bootstrap.js}"></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     $(function () {
@@ -13,21 +16,35 @@
 </script>
 </head>
 <body>
-	<div class="content">
-		<form action="/login" th:action="@{/login}" th:object="${form}" method="post">
-			<div><label> User ID : <input type="text" name="userId" /> </label></div>
-            <div><label> Password: <input type="password" name="password" /> </label></div>
-            <div>
-            	<input type="submit" value="Sign In"/>
-            	<input type="submit" value="login"/>
-            </div>
-		</form>
-		<div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
+	<!-- container -->
+	<div class="container">
+		<!-- card-container -->
+		<div class="card card-container">
+			<img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" />
+			<p id="profile-name" class="profile-name-card"></p>
+			<!-- form -->
+			<form class="form-signin" action="/login"  th:action="@{/login}"  th:object="${form}" method="post">
+				<span id="reauth-email" class="reauth-email"></span> 
+				<input type="text" class="form-control" placeholder="Username"  th:name="username" th:value="*{username}"/> 
+				<input type="password" class="form-control" placeholder="Password" th:name="password" th:value="*{password}" />
+				<div id="remember" class="checkbox">
+					<label> <input type="checkbox" value="remember-me" />
+						Remember me
+					</label>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+			</form>
+			<div th:if="${param.error}">
+	            <span class="alert-danger">Invalid username and password.</span>
+	        </div>
+	        <div th:if="${param.logout}">
+	            <span class="alert-danger">You have been logged out.</span>
+	        </div>
+			<!-- /form -->
+			<a href="#" class="forgot-password"> Forgot the password? </a>
+		</div>
+		<!-- /card-container -->
 	</div>
+	<!-- /container -->
 </body>
 </html>

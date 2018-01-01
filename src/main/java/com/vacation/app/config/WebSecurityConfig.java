@@ -1,34 +1,57 @@
 package com.vacation.app.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.vacation.app.service.CustomUserService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Bean
+    UserDetailsService customUserService() {
+        return new CustomUserService();
+    }
+	 
 	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/login", "/apply", "/approve", "/", "/**").permitAll()
-                .antMatchers("/css/**", "/js/**","/img/**").permitAll()
-                //.antMatchers("/**").hasRole("USER")
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserService());
     }
 	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/css/**", "/scripts/**", "/img/**").permitAll();
+		http.authorizeRequests().anyRequest().authenticated()
+        .and().formLogin().loginPage("/login")
+        // 设置默认登录成功跳转页面
+         .defaultSuccessUrl("/index").failureUrl("/login?error").permitAll()
+        .and()
+        // 开启cookie保存用户数据
+        .rememberMe()
+        // 设置cookie有效期
+        .tokenValiditySeconds(60 * 60 * 24 * 7)
+        // 设置cookie的私钥
+        // .key("")
+        .and()
+        .logout()
+        // 默认注销行为为logout，可以通过下面的方式来修改
+        // .logoutUrl("/logoout")
+        // 设置注销成功后跳转页面，默认是跳转到登录页面
+        //.logoutSuccessUrl("")
+        .permitAll();
+	}
+
 	@Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user0001").password("user0001").roles("USER");
-    }
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+		auth.inMemoryAuthentication().withUser("admin").password("password").roles("ADMIN");
+
+	}
 }

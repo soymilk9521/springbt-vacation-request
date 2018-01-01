@@ -1,8 +1,24 @@
 package com.vacation.app.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 /**
@@ -12,7 +28,7 @@ import java.util.List;
 @Entity
 @Table(name="act_id_user")
 @NamedQuery(name="ActIdUser.findAll", query="SELECT a FROM ActIdUser a")
-public class ActIdUser implements Serializable {
+public class ActIdUser extends BaseEntity implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,7 +55,7 @@ public class ActIdUser implements Serializable {
 	private int rev;
 
 	//bi-directional many-to-many association to ActIdGroup
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="act_id_membership"
 		, joinColumns={
@@ -116,6 +132,46 @@ public class ActIdUser implements Serializable {
 
 	public void setActIdGroups(List<ActIdGroup> actIdGroups) {
 		this.actIdGroups = actIdGroups;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+        List<ActIdGroup> roles = this.getActIdGroups();
+        for (ActIdGroup role : roles) {
+            auths.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return auths;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.getPwd();
+	}
+
+	@Override
+	public String getUsername() {
+		return this.getId();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 }

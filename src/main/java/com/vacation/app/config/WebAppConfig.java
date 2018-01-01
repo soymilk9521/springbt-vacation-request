@@ -61,17 +61,18 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+    	// Top pages
         registry.addViewController("/top").setViewName("top");
-        
+        // Apply pages
         registry.addViewController("/A0010").setViewName("apply/A0010");
         registry.addViewController("/A0100").setViewName("apply/A0100");
         registry.addViewController("/A1000").setViewName("apply/A1000");
         registry.addViewController("/A1100").setViewName("apply/A1100");
-        
+        // Approve pages
         registry.addViewController("/B1000").setViewName("approve/B1000");
         registry.addViewController("/B1100").setViewName("approve/B1100");
         registry.addViewController("/B2000").setViewName("approve/B2000");
-        
+        // Manager pages
         registry.addViewController("/C0010").setViewName("manager/C0010");
         registry.addViewController("/C1000").setViewName("manager/C1000");
         registry.addViewController("/C1100").setViewName("manager/C1100");

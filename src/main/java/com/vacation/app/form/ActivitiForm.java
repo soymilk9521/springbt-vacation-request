@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ConfigurationProperties(prefix = "activiti.form")
-@PropertySource("classpath:i18n/messages${activiti.lang}.properties")
+@PropertySource("classpath:i18n/messages.properties")
 public class ActivitiForm implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean {
 	
 	public ActivitiForm() {

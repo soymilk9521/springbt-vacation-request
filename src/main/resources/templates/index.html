@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <title>Home</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<script th:src="@{/scripts/jquery-1.10.2.js}"></script>
+<script th:src="@{/scripts/bootstrap.js}"></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     $(function () {
@@ -17,6 +20,9 @@
 		<a href="/apply">vacation apply</a><br />
 		<a href="/approve">vacation approve</a><br />
 		<a href="/register">register</a><br />
+		<form th:action="@{/logout}" method="post">
+            <input type="submit" class="btn btn-primary" value="logout"/>
+        </form>
 	</div>
 </body>
 </html>

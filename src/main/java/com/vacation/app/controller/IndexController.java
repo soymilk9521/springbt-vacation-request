@@ -9,7 +9,7 @@ import com.vacation.app.form.ApplyForm;
 @Controller
 public class IndexController {
 
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String index(Model model) {
 		ApplyForm vo = new ApplyForm();
 		model.addAttribute("apply", vo);
