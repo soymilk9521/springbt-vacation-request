@@ -8,21 +8,26 @@
 <script th:src="@{/scripts/jquery-1.10.2.js}"></script>
 <script th:src="@{/scripts/bootstrap.js}"></script>
 <script th:inline="javascript">
-    /*<![CDATA[*/
-    $(function () {
-    	 
-    });
-    /*]]>*/
+	/*<![CDATA[*/
+	$(function() {
+
+	});
+	/*]]>*/
 </script>
 </head>
 <body>
-	<div class="content">
-		<a href="/apply">vacation apply</a><br />
-		<a href="/approve">vacation approve</a><br />
-		<a href="/register">register</a><br />
-		<form th:action="@{/logout}" method="post">
-            <input type="submit" class="btn btn-primary" value="logout"/>
-        </form>
+	<div class="	table-dark">
+		<div class="card" style="width: 80%;">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><a href="/apply">Vacation Apply</a></li>
+				<li class="list-group-item"><a href="/approve">Vacation Approve</a></li>
+				<li class="list-group-item"><a href="/register">Register</a></li>
+				<li class="list-group-item"><a href="/top">Top</a></li>
+			</ul>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" class="btn btn-primary" value="logout" />
+			</form>
+		</div>
 	</div>
 </body>
 </html>

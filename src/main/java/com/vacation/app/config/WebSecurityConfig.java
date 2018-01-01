@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         // 开启cookie保存用户数据
         .rememberMe()
+        .useSecureCookie(true)
         // 设置cookie有效期
         .tokenValiditySeconds(60 * 60 * 24 * 7)
         // 设置cookie的私钥

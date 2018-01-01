@@ -20,7 +20,7 @@
 	<div class="container">
 		<!-- card-container -->
 		<div class="card card-container">
-			<img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" />
+			<img class="profile-img-card" th:src="@{/img/lion.jpg}" alt="" />
 			<p id="profile-name" class="profile-name-card"></p>
 			<!-- form -->
 			<form class="form-signin" action="/login"  th:action="@{/login}"  th:object="${form}" method="post">
@@ -28,7 +28,7 @@
 				<input type="text" class="form-control" placeholder="Username"  th:name="username" th:value="*{username}"/> 
 				<input type="password" class="form-control" placeholder="Password" th:name="password" th:value="*{password}" />
 				<div id="remember" class="checkbox">
-					<label> <input type="checkbox" value="remember-me" />
+					<label> <input type="checkbox" name="remember-me" />
 						Remember me
 					</label>
 				</div>
