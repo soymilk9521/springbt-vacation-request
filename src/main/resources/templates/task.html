@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<script th:src="@{/scripts/jquery-1.10.2.js}"></script>
+<script th:src="@{/scripts/bootstrap.js}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $(function () {
+    	 
+    });
+    /*]]>*/
+</script>
+</head>
+<body>
+	<!-- container -->
+	<div class="container">
+		<!-- card-container -->
+		<div class="card card-container">
+			<!-- form -->
+			<form class="form-signin" action="/task"  th:action="@{/task}" method="post">
+				<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">start</button>
+			</form>
+			<!-- /form -->
+		</div>
+		<!-- /card-container -->
+	</div>
+	<!-- /container -->
+</body>
+</html>

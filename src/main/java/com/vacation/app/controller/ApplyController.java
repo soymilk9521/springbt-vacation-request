@@ -105,7 +105,7 @@ public class ApplyController {
 			logger.info("activityId >>> " + activityId);
 			for (Task task : tasks) {
 				logger.info("taskId >>> " + task.getId() + " taskKey >>> " + task.getTaskDefinitionKey());
-				if (activityId.equals(task.getTaskDefinitionKey())) {
+				if (activityId != null && activityId.equals(task.getTaskDefinitionKey())) {
 					// set candidate group to task
 					taskService.addCandidateGroup(task.getId(), CANDIDATE_GROUP_ID);
 				}
