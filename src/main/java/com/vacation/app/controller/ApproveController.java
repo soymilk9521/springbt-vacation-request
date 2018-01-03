@@ -66,12 +66,12 @@ public class ApproveController {
 		List<ActIdUser> users = group.getActIdUsers();
 		form.setUserList(users);
 		model.addAttribute("lang", lang);
-		return "approve";
+		return "demo/approve";
 	}
 
 	@RequestMapping(value = "approve", method = RequestMethod.POST)
 	public String approve(Model model, @ModelAttribute(value = "tasks") List<Task> tasks, BindingResult result) {
 
-		return "approve";
+		return "demo/approve";
 	}
 }

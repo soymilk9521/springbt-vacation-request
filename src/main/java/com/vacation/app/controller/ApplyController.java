@@ -5,11 +5,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.activiti.engine.FormService;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.form.FormProperty;
+import org.activiti.engine.form.StartFormData;
+import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
+import org.assertj.core.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +33,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vacation.app.dao.ActIdUserDao;
 import com.vacation.app.form.ApplyForm;
 import com.vacation.app.model.ActIdUser;
-
 /**
  * Apply controller
  * 
@@ -35,10 +40,9 @@ import com.vacation.app.model.ActIdUser;
  *
  */
 @Controller
-public class ApplyController {
+public class ApplyController extends BaseController {
 
-	public static final String PROCESS_KEY = "vacationRequest";
-	public static final String CANDIDATE_GROUP_ID = "group0002";
+	public static final String PROCESS_KEY = "vacation-request";
 
 	public Logger logger = LoggerFactory.getLogger(ApplyController.class);
 
@@ -53,6 +57,9 @@ public class ApplyController {
 
 	@Autowired
 	private IdentityService identityService;
+	
+	@Autowired
+	private FormService formService;
 
 	/**
 	 * show vacation request apply page
@@ -61,10 +68,10 @@ public class ApplyController {
 	 * @param form
 	 * @return
 	 */
-	@RequestMapping(value = "/apply", method = RequestMethod.GET)
+	@GetMapping("/apply")
 	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
 			@RequestParam(value = "lang", required = false) String lang) {
-		logger.info(this.getClass().getSimpleName() + " >>> " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info( this.getClassSimpleName() + " >>> " + this.getMethod());
 		// set default form values
 		List<ActIdUser> users = userDao.findAll();
 		form.setUserList(users);
@@ -72,7 +79,7 @@ public class ApplyController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		form.setStartDate(sdf.format(new Date()));
 		model.addAttribute("lang", lang);
-		return "apply";
+		return "demo/apply";
 	}
 
 	/**
@@ -105,10 +112,6 @@ public class ApplyController {
 			logger.info("activityId >>> " + activityId);
 			for (Task task : tasks) {
 				logger.info("taskId >>> " + task.getId() + " taskKey >>> " + task.getTaskDefinitionKey());
-				if (activityId != null && activityId.equals(task.getTaskDefinitionKey())) {
-					// set candidate group to task
-					taskService.addCandidateGroup(task.getId(), CANDIDATE_GROUP_ID);
-				}
 			}
 		} else {
 			// TODO show error messages
@@ -125,6 +128,32 @@ public class ApplyController {
 			return "apply";
 		}
 
-		return "redirect:/approve";
+		//return "redirect:/demo/approve";
+		return "demo/apply_list";
+	}
+	
+	@GetMapping("/apply/list")
+	public String list(Model model) {
+		List<ProcessInstance> processInstances = runtimeService.createProcessInstanceQuery().list();
+		List<Execution> executions= runtimeService.createExecutionQuery().list();
+		model.addAttribute("processInstances", processInstances);
+		model.addAttribute("executions", executions);
+		for (ProcessInstance ins: processInstances) {
+			logger.info("getProcessVariables() >>> " + ins.getProcessVariables());
+			StartFormData data = formService.getStartFormData(ins.getProcessDefinitionId());
+			
+			logger.info("data.getFormKey() >>> " + data.getFormKey());
+			List<FormProperty> properties = data.getFormProperties();
+			logger.info("properties >>> " + properties);
+		}
+		return "demo/apply_list";
+	}
+	
+	public String getMethod() {
+		return Thread.currentThread().getStackTrace()[1].getMethodName();
+	}
+	
+	public String getClassSimpleName() {
+		return this.getClass().getSimpleName();
 	}
 }

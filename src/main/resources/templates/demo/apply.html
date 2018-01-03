@@ -4,7 +4,11 @@
 <meta charset="UTF-8" />
 <title>Apply</title>
 <link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+
 <script th:inline="javascript">
     /*<![CDATA[*/
     $(function () {
@@ -27,6 +31,10 @@
             if ($(this).val() === sl ) {
                 $(this).attr("selected","selected");
             }
+         });
+         
+         $("#datepicker").datepicker({
+             dateFormat: 'yy-mm-dd'
          });
     });
     /*]]>*/
@@ -52,7 +60,7 @@
 			<input type="hidden" name="applyUserName"/>
 			<!-- ${form.property} and *{property} are the same way-->
 			<input type="text" th:name="numberOfDays" th:value="${form.numberOfDays}" placeholder="number of days"/><br/>
-            <input type="text" th:name="startDate" th:value="*{startDate}" /><br/>
+            <input type="text" id="datepicker" th:name="startDate" th:value="*{startDate}" /><br/>
             <input type="text" th:name="vacationMotivation" th:value="*{vacationMotivation}" placeholder="vacation motivation" /><br/>
             <input type="submit"  th:value="#{vacation.request.apply.button}"/>
 		</form>
