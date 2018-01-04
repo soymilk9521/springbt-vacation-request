@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <title>Apply List</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
 <link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script th:src="@{/scripts/jquery-1.10.2.js}"></script>
+<script th:src="@{/scripts/bootstrap.js}"></script>
 
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -22,16 +22,20 @@
 </style>
 </head>
 <body>
-	<div class="content">
-		<h1 th:text="#{vacation.request.apply.title}"></h1>
-		
-		<form action="/apply/list" th:action="@{/apply/list}" method="post">
-			<ul th:if="${processInstances != null and processInstances.size() > 0}">
-				<li th:each="processInstance : ${processInstances}" th:text="${processInstance.getStartUserId()}"></li>
-			</ul>
+<!-- 			<ul th:if="${processInstances != null and processInstances.size() > 0}"> -->
+<!-- 				<li th:each="processInstance : ${processInstances}" th:text="${processInstance.getStartUserId()}"></li> -->
+<!-- 			</ul> -->
 <!-- 			<ul th:if="${executions != null and executions.size() > 0}"> -->
 <!-- 				<li th:each="execution : ${executions}" th:text="${execution.getStartUserId()}"></li> -->
 <!-- 			</ul> -->
+	<div class="table-dark">
+		<h1 th:text="#{vacation.request.apply.list}"></h1>
+		<form action="/apply/list" th:action="@{/apply/list}" method="post">
+		<div class="card" style="width: 80%;" th:if="${processInstances != null and processInstances.size() > 0}">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item" th:each="processInstance : ${processInstances}"><a href="#" th:text="${processInstance.getStartUserId()}"></a></li>
+			</ul>
+		</div>
 		</form>
 	</div>
 </body>

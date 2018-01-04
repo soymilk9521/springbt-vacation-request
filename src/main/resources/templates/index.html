@@ -10,23 +10,33 @@
 <script th:inline="javascript">
 	/*<![CDATA[*/
 	$(function() {
-
+		$('input[name=logout]').bind('click', function(){
+			$("form[name=form]").submit();
+		});
+		$('input[name=clear]').bind('click', function(){
+			$("form[name=form]").attr('action', '/clear');
+			$("form[name=form]").submit();
+		});
+		$("form[name=form]");
 	});
 	/*]]>*/
 </script>
 </head>
 <body>
-	<div class="	table-dark">
+	<div class="table-dark">
 		<div class="card" style="width: 80%;">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><a href="/apply">Vacation Apply</a></li>
+				<li class="list-group-item"><a href="/apply/list">Apply List</a></li>
 				<li class="list-group-item"><a href="/approve">Vacation Approve</a></li>
 				<li class="list-group-item"><a href="/register">Register</a></li>
 				<li class="list-group-item"><a href="/top">Top</a></li>
 				<li class="list-group-item"><a href="/task">Task</a></li>
+				<li class="list-group-item"><font style="color: #428bca;">vacation request: </font><span style="font-size:1.5rem;color:red;" th:text="${count}"></span></li>
 			</ul>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" class="btn btn-primary" value="logout" />
+			<form name="form" th:action="@{logout}" method="post">
+				<input type="button" class="btn btn-primary" name="logout" value="logout" />
+				<input type="button" class="btn btn-primary" name="clear" value="clear" />
 			</form>
 		</div>
 	</div>

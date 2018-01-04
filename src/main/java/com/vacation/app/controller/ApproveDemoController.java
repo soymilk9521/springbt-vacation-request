@@ -26,11 +26,11 @@ import com.vacation.app.model.ActIdGroup;
 import com.vacation.app.model.ActIdUser;
 
 @Controller
-public class ApproveController {
+public class ApproveDemoController {
 
 	public static final String CANDIDATE_GROUP_ID = "group0002";
 	
-	public Logger logger = LoggerFactory.getLogger(ApproveController.class);
+	public Logger logger = LoggerFactory.getLogger(ApproveDemoController.class);
 
 	@Autowired
 	public RepositoryService repositoryService;

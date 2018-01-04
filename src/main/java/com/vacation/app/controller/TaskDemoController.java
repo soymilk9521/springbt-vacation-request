@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class TaskController {
+public class TaskDemoController {
 
 	public static String PROCESS_KEY = "service-task-process";
-	public Logger logger = LoggerFactory.getLogger(TaskController.class);
+	public Logger logger = LoggerFactory.getLogger(TaskDemoController.class);
 			
 	@Autowired
 	private RuntimeService runtimeService;

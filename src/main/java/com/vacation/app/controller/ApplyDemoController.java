@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.activiti.engine.FormService;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
@@ -13,8 +15,8 @@ import org.activiti.engine.form.FormProperty;
 import org.activiti.engine.form.StartFormData;
 import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.runtime.ProcessInstanceQuery;
 import org.activiti.engine.task.Task;
-import org.assertj.core.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vacation.app.dao.ActIdUserDao;
 import com.vacation.app.form.ApplyForm;
 import com.vacation.app.model.ActIdUser;
+import com.vacation.app.service.ApplyDemoService;
 /**
  * Apply controller
  * 
@@ -40,11 +43,11 @@ import com.vacation.app.model.ActIdUser;
  *
  */
 @Controller
-public class ApplyController extends BaseController {
+public class ApplyDemoController extends BaseController {
 
 	public static final String PROCESS_KEY = "vacation-request";
 
-	public Logger logger = LoggerFactory.getLogger(ApplyController.class);
+	public Logger logger = LoggerFactory.getLogger(ApplyDemoController.class);
 
 	@Autowired
 	private RuntimeService runtimeService;
@@ -61,6 +64,9 @@ public class ApplyController extends BaseController {
 	@Autowired
 	private FormService formService;
 
+	@Autowired
+    private ApplyDemoService applyService;
+	
 	/**
 	 * show vacation request apply page
 	 * 
@@ -73,8 +79,8 @@ public class ApplyController extends BaseController {
 			@RequestParam(value = "lang", required = false) String lang) {
 		logger.info( this.getClassSimpleName() + " >>> " + this.getMethod());
 		// set default form values
-		List<ActIdUser> users = userDao.findAll();
-		form.setUserList(users);
+//		List<ActIdUser> users = userDao.findAll();
+//		form.setUserList(users);
 		form.setNumberOfDays(1L);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		form.setStartDate(sdf.format(new Date()));
@@ -129,24 +135,39 @@ public class ApplyController extends BaseController {
 		}
 
 		//return "redirect:/demo/approve";
-		return "demo/apply_list";
+		return "redirect:/apply/list";
 	}
 	
 	@GetMapping("/apply/list")
 	public String list(Model model) {
 		List<ProcessInstance> processInstances = runtimeService.createProcessInstanceQuery().list();
+		String username = applyService.getCurrentUserName();
+		logger.info("username >>> " + username);
 		List<Execution> executions= runtimeService.createExecutionQuery().list();
 		model.addAttribute("processInstances", processInstances);
 		model.addAttribute("executions", executions);
 		for (ProcessInstance ins: processInstances) {
+			Task task = taskService.createTaskQuery().processInstanceId(ins.getId()).singleResult();
+			logger.info("taskName >>> " + task.getName());
 			logger.info("getProcessVariables() >>> " + ins.getProcessVariables());
 			StartFormData data = formService.getStartFormData(ins.getProcessDefinitionId());
-			
+			Object obj = formService.getRenderedStartForm(ins.getProcessDefinitionId());
 			logger.info("data.getFormKey() >>> " + data.getFormKey());
 			List<FormProperty> properties = data.getFormProperties();
 			logger.info("properties >>> " + properties);
+			String processInstanceId = ins.getId();
+			Execution execution = runtimeService.createExecutionQuery().executionId(processInstanceId).singleResult();
+			System.out.println(execution);
 		}
+		
 		return "demo/apply_list";
+	}
+	
+	@Transactional()
+	public ProcessInstanceQuery createUnFinishedProcessInstanceQuery(String userId) {
+	    ProcessInstanceQuery unfinishedQuery = runtimeService.createProcessInstanceQuery().processDefinitionKey(PROCESS_KEY)
+	            .active();
+	    return unfinishedQuery;
 	}
 	
 	public String getMethod() {
