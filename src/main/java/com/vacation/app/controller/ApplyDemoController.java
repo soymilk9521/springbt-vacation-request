@@ -78,7 +78,7 @@ public class ApplyDemoController extends BaseController {
 	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
 			@RequestParam(value = "lang", required = false) String lang) {
 		logger.info( this.getClassSimpleName() + " >>> " + this.getMethod());
-		// set default form values
+//		 set default form values
 //		List<ActIdUser> users = userDao.findAll();
 //		form.setUserList(users);
 		form.setNumberOfDays(1L);
@@ -106,19 +106,11 @@ public class ApplyDemoController extends BaseController {
 			Map<String, Object> vars = objMapper.convertValue(form, Map.class);
 			logger.info("vars >>> " + vars);
 			// set apply user
-			identityService.setAuthenticatedUserId(form.getApplyUserId());
+			String userId = applyService.getCurrentUserName();
+			identityService.setAuthenticatedUserId(userId);
 			// start apply process
 			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(PROCESS_KEY, vars);
 			logger.info("process instance id >>> " + processInstance.getId());
-			// get tasks of process
-			List<Task> tasks = taskService.createTaskQuery().processInstanceId(processInstance.getProcessInstanceId())
-					.list();
-
-			String activityId = processInstance.getActivityId();
-			logger.info("activityId >>> " + activityId);
-			for (Task task : tasks) {
-				logger.info("taskId >>> " + task.getId() + " taskKey >>> " + task.getTaskDefinitionKey());
-			}
 		} else {
 			// TODO show error messages
 			for (Object object : result.getAllErrors()) {
@@ -131,18 +123,14 @@ public class ApplyDemoController extends BaseController {
 					logger.info("objectError.getCode() >>> " + objectError.getCode());
 				}
 			}
-			return "apply";
+			return "demo/apply";
 		}
-
-		//return "redirect:/demo/approve";
 		return "redirect:/apply/list";
 	}
 	
 	@GetMapping("/apply/list")
 	public String list(Model model) {
 		List<ProcessInstance> processInstances = runtimeService.createProcessInstanceQuery().list();
-		String username = applyService.getCurrentUserName();
-		logger.info("username >>> " + username);
 		List<Execution> executions= runtimeService.createExecutionQuery().list();
 		model.addAttribute("processInstances", processInstances);
 		model.addAttribute("executions", executions);
@@ -155,9 +143,7 @@ public class ApplyDemoController extends BaseController {
 			logger.info("data.getFormKey() >>> " + data.getFormKey());
 			List<FormProperty> properties = data.getFormProperties();
 			logger.info("properties >>> " + properties);
-			String processInstanceId = ins.getId();
-			Execution execution = runtimeService.createExecutionQuery().executionId(processInstanceId).singleResult();
-			System.out.println(execution);
+		
 		}
 		
 		return "demo/apply_list";

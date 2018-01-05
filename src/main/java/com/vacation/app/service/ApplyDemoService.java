@@ -1,9 +1,5 @@
 package com.vacation.app.service;
 
-import java.util.List;
-
-
-import org.activiti.engine.runtime.ProcessInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +15,12 @@ public class ApplyDemoService {
 	@Autowired
     private IAuthenticationFacade authenticationFacade;
 	
+	/**
+	 * ログインユーザーを取得
+	 * @return
+	 */
 	public String getCurrentUserName() {
         Authentication authentication = authenticationFacade.getAuthentication();
         return authentication.getName();
     }
-	
-	public List<ProcessInstance> getProcessInstancesOfUserName(List<ProcessInstance> processInstances) {
-		String username = this.getCurrentUserName();
-		
-		return null;
-	}
-	
-	
 }

@@ -15,6 +15,11 @@
 		<endEvent id="sid-EE0B4981-8730-4D5C-8B61-A481368660BA"></endEvent>
 		<sequenceFlow id="sid-8F7570EA-6148-4105-A79F-2DD02B1789B3"
 			sourceRef="sid-075B40B6-F85C-4196-AAE1-E93CFAEE8A66" targetRef="sid-EE0B4981-8730-4D5C-8B61-A481368660BA"></sequenceFlow>
+		<boundaryEvent id="testtimerevent" attachedToRef="sid-075B40B6-F85C-4196-AAE1-E93CFAEE8A66" cancelActivity="true">
+	      <timerEventDefinition>
+	        <timeDate>${startTime}</timeDate>
+	      </timerEventDefinition>
+	    </boundaryEvent>
 	</process>
 	<bpmndi:BPMNDiagram id="BPMNDiagram_service-task-process">
 		<bpmndi:BPMNPlane bpmnElement="service-task-process"
