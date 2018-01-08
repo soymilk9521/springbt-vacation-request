@@ -7,7 +7,7 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.ActivitiTestCase;
 import org.activiti.engine.test.Deployment;
 
-public class TestEvent extends ActivitiTestCase {
+public class TestJunitConfig extends ActivitiTestCase {
 	
 	@Deployment
 	public void testTimerStartEvent() throws InterruptedException {
