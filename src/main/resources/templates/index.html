@@ -32,7 +32,9 @@
 				<li class="list-group-item"><a href="/register">Register</a></li>
 				<li class="list-group-item"><a href="/top">Top</a></li>
 				<li class="list-group-item"><a href="/task">Task</a></li>
-				<li class="list-group-item"><font style="color: #428bca;">vacation request: </font><span style="font-size:1.5rem;color:red;" th:text="${count}"></span></li>
+				<hr/>
+				<li class="list-group-item"><font style="color: #428bca;">申請中: </font><span style="font-size:1.5rem;color:red;" th:text="${count}"></span></li>
+				<li class="list-group-item"><font style="color: #428bca;">承認済: </font><span style="font-size:1.5rem;color:red;" th:text="${finished}"></span></li>
 			</ul>
 			<form name="form" th:action="@{logout}" method="post">
 				<input type="button" class="btn btn-primary" name="logout" value="logout" />

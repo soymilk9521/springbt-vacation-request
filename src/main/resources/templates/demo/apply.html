@@ -12,12 +12,6 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     $(function () {
-//     	 var employName = $('.user-list option:checked').text();
-//     	 $('input[name=applyUserName]').attr('value', employName);
-//     	 $('.user-list').on('change', function(){
-//     		 $('input[name=applyUserName]').attr('value', $(this).find('option:checked').text());
-//     	 })
-    	 
     	 $("#lang").on('change', function(){
     		 var selVal = $(this).val();
     		 if (selVal) {
@@ -33,6 +27,7 @@
             }
          });
          
+         // date picker
          $("#datepicker").datepicker({
              dateFormat: 'yy-mm-dd'
          });
@@ -54,10 +49,7 @@
 	            <option value="ja_JP">Japanese</option>
 	            <option value="en_US">English</option>
 	        </select>
-<!-- 			<select th:name="applyUserId" class="user-list"> -->
-<!-- 				<option th:each="user : *{userList}" th:value="${user.getId()}" th:text="${user.getFirst() + ' ' + user.getLast()}"></option> -->
-<!-- 			</select> -->
-<!-- 			<input type="hidden" name="applyUserName"/> -->
+			<input type="hidden" name="processInstanceId" th:value="*{processInstanceId}" />
 			<!-- ${form.property} and *{property} are the same way-->
 			<input type="text" th:name="numberOfDays" th:value="${form.numberOfDays}" placeholder="number of days"/><br/>
             <input type="text" id="datepicker" th:name="startDate" th:value="*{startDate}" /><br/>

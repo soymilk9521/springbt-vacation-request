@@ -1,11 +1,11 @@
 package com.vacation.app.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
-import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.slf4j.Logger;
@@ -13,17 +13,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.vacation.app.dao.ActIdGroupDao;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vacation.app.form.ActivitiForm;
 import com.vacation.app.form.ApplyForm;
-import com.vacation.app.model.ActIdGroup;
-import com.vacation.app.model.ActIdUser;
+import com.vacation.app.form.ApproveForm;
+import com.vacation.app.service.ApplyDemoService;
 
 @Controller
 public class ApproveDemoController {
@@ -42,36 +42,61 @@ public class ApproveDemoController {
 	public TaskService taskService;
 	
 	@Autowired
-	private ActIdGroupDao groupDao;
-	
-	@Autowired
     public ActivitiForm activitiForm;
 
-	@RequestMapping(value = "approve", method = RequestMethod.GET)
+	@Autowired
+    private ApplyDemoService applyService;
+	
+	/**
+	 * approve list
+	 * @param model
+	 * @param form
+	 * @param lang
+	 * @return
+	 */
+	@GetMapping("approve")
 	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
 			@RequestParam(value="lang", required=false) String lang) {
-		// System.setProperty("activiti.lang", "_" + lang);
-		List<ProcessInstance> instances = runtimeService.createProcessInstanceQuery().list();
-		List<Execution> executions = runtimeService.createExecutionQuery().list();
-		List<Task> tasks = taskService.createTaskQuery().active().list();
+		String userId = applyService.getCurrentUserName();
+		List<ProcessInstance> instances = runtimeService.createProcessInstanceQuery().involvedUser(userId).list();
+		List<Task> tasks = taskService.createTaskQuery().taskCandidateUser(userId).active().list();
 		model.addAttribute("tasks", tasks);
 		logger.info("Number of process instances >>> " + instances.size());
 		logger.info("Number of tasks >>> " + tasks.size());
-		logger.info("Number of executions >>> " + executions.size());
-		
-		logger.info("test properties bean >>> " + activitiForm.getWouldlike());
-		
-		// can approve users
-		ActIdGroup group = groupDao.findOne(CANDIDATE_GROUP_ID);
-		List<ActIdUser> users = group.getActIdUsers();
-		form.setUserList(users);
 		model.addAttribute("lang", lang);
 		return "demo/approve";
 	}
+	
+	/**
+	 * preview approve
+	 * @param model
+	 * @param taskId
+	 * @param form
+	 * @return
+	 */
+	@GetMapping("approve/{taskId}")
+	public String preApprove(Model model, @PathVariable("taskId") String taskId
+			, @ModelAttribute(value = "form") ApproveForm form) {
+		form.setTaskId(taskId);
+		return "demo/pre_approve";
+	}
 
-	@RequestMapping(value = "approve", method = RequestMethod.POST)
-	public String approve(Model model, @ModelAttribute(value = "tasks") List<Task> tasks, BindingResult result) {
-
-		return "demo/approve";
+	/**
+	 * approve
+	 * @param model
+	 * @param form
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	@PostMapping("approve")
+	public String approve(Model model, @ModelAttribute(value = "form") ApproveForm form) {
+		String userId = applyService.getCurrentUserName();
+		if (!"".equals(form.getTaskId())){
+			ObjectMapper objMapper = new ObjectMapper();
+			Map<String, Object> vars = objMapper.convertValue(form, Map.class);
+			taskService.claim(form.getTaskId(), userId);
+			taskService.complete(form.getTaskId(), vars);
+		}
+		return "redirect:/approve";
 	}
 }

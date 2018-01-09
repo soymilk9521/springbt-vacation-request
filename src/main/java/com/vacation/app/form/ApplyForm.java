@@ -1,10 +1,5 @@
 package com.vacation.app.form;
 
-import java.util.List;
-
-import com.vacation.app.model.ActIdGroup;
-import com.vacation.app.model.ActIdUser;
-
 public class ApplyForm {
 	private Long numberOfDays;
 	private String startDate;
@@ -12,12 +7,16 @@ public class ApplyForm {
 	private String applyUserId;
 	private String applyUserName;
 	private String lang;
-	private List<ActIdUser> userList;
-	private List<ActIdGroup> groupList;
-	
-	
+	private String processInstanceId;
+
 	public String getLang() {
 		return lang;
+	}
+	public String getProcessInstanceId() {
+		return processInstanceId;
+	}
+	public void setProcessInstanceId(String processInstanceId) {
+		this.processInstanceId = processInstanceId;
 	}
 	public void setLang(String lang) {
 		this.lang = lang;
@@ -33,18 +32,6 @@ public class ApplyForm {
 	}
 	public void setApplyUserName(String applyUserName) {
 		this.applyUserName = applyUserName;
-	}
-	public List<ActIdGroup> getGroupList() {
-		return groupList;
-	}
-	public void setGroupList(List<ActIdGroup> groupList) {
-		this.groupList = groupList;
-	}
-	public List<ActIdUser> getUserList() {
-		return userList;
-	}
-	public void setUserList(List<ActIdUser> userList) {
-		this.userList = userList;
 	}
 	public Long getNumberOfDays() {
 		return numberOfDays;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Approve</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" href="/css/main.css" />
+<script th:src="@{/scripts/jquery-1.10.2.js}"></script>
+<script th:src="@{/scripts/bootstrap.js}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $(function () {
+  
+    });
+    /*]]>*/
+</script>
+<style>
+
+</style>
+</head>
+<body>
+	<div class="content">
+		<h1 th:text="#{vacation.request.approve.title}"></h1>
+		<form action="/approve" th:action="@{/approve}" method="post" th:object="${form}">
+			<div>
+				<select name="vacationApproved">
+					<option value="false">不同意</option>
+					<option value="true">同意</option>
+				</select>
+				<input type="hidden" name="taskId"  th:value="${form.taskId}"/>
+				<input type="text" name="managerMotivation" placeholder="manager motivation" /><br/>
+	            <input type="submit"  th:value="#{vacation.request.approve.button}"/>
+			</div>
+		</form>
+		
+	</div>
+</body>
+</html>
