@@ -1,7 +1,13 @@
 package com.vacation.app.form;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class ApplyForm {
+	@NotNull
 	private Long numberOfDays;
+	@NotBlank
 	private String startDate;
 	private String vacationMotivation;
 	private String applyUserId;

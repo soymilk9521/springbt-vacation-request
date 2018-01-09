@@ -51,9 +51,11 @@
 	        </select>
 			<input type="hidden" name="processInstanceId" th:value="*{processInstanceId}" />
 			<!-- ${form.property} and *{property} are the same way-->
-			<input type="text" th:name="numberOfDays" th:value="${form.numberOfDays}" placeholder="number of days"/><br/>
-            <input type="text" id="datepicker" th:name="startDate" th:value="*{startDate}" /><br/>
-            <input type="text" th:name="vacationMotivation" th:value="*{vacationMotivation}" placeholder="vacation motivation" /><br/>
+			<input type="text" th:field="*{numberOfDays}" th:value="*{numberOfDays}" placeholder="number of days"/><br/>
+			<div th:if="${#fields.hasErrors('numberOfDays')}" th:errors="*{numberOfDays}"></div>
+            <input type="text" id="datepicker" th:field="*{startDate}" th:value="*{startDate}" placeholder="start date"/><br/>
+            <div th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
+            <input type="text" th:field="*{vacationMotivation}" th:value="*{vacationMotivation}" placeholder="vacation motivation" /><br/>
             <input type="submit"  th:value="#{vacation.request.apply.button}"/>
 		</form>
 	</div>

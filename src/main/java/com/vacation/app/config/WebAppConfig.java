@@ -3,10 +3,15 @@ package com.vacation.app.config;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -21,7 +26,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Value("${lang.default.locale}")
     private String defLocal;
-
+    
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
@@ -47,8 +52,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         return localeResolver;
     }
 
-    /*
-     * customize message location
+    /**
+     *  message internationalization
+     * @return
      */
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
@@ -58,6 +64,28 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         messageSource.setBasename("classpath:i18n/messages");
         return messageSource;
     }
+    
+    
+    /**
+     * validation internationalization 
+     * @return
+     */
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+    	ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+    	messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
+        messageSource.setBasename("classpath:i18n/messages");
+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+        localValidatorFactoryBean.setValidationMessageSource(messageSource);
+        return localValidatorFactoryBean;
+    }
+    
+    @Override
+    public Validator getValidator()
+    {
+        return validator();
+    }
+    
     
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

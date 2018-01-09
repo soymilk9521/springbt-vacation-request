@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
@@ -86,7 +88,7 @@ public class ApplyDemoController extends BaseController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
-	public String apply(Model model, @ModelAttribute(value = "form") ApplyForm form, 
+	public String apply(Model model, @Valid @ModelAttribute(value = "form") ApplyForm form, 
 			BindingResult result) {
 		if (!result.hasErrors()) {
 			ObjectMapper objMapper = new ObjectMapper();
