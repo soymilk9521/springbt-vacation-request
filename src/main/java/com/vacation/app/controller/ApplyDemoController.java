@@ -12,9 +12,7 @@ import javax.validation.Valid;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
-import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.engine.task.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,8 +63,7 @@ public class ApplyDemoController extends BaseController {
 	 * @return
 	 */
 	@GetMapping("/apply")
-	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
-			@RequestParam(value = "lang", required = false) String lang) {
+	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form) {
 		if (StringUtils.isEmpty(form.getNumberOfDays())) {
 			form.setNumberOfDays(1L);
 		}
@@ -74,7 +71,6 @@ public class ApplyDemoController extends BaseController {
 		if (StringUtils.isEmpty(form.getStartDate())){
 			form.setStartDate(sdf.format(new Date()));
 		}
-		model.addAttribute("lang", lang);
 		return "demo/apply";
 	}
 
@@ -137,12 +133,6 @@ public class ApplyDemoController extends BaseController {
 				.active().involvedUser(userId).list();		
 		List<ApplyForm> list = new ArrayList<ApplyForm>();
 		for (ProcessInstance ins: processInstances) {
-
-			List<Execution> executions = runtimeService.createExecutionQuery().parentId(ins.getId()).list();
-			List<Task> tasks = taskService.createTaskQuery().taskCandidateOrAssigned(userId).list();
-			for (Execution execution: executions) {
-				execution.getName();
-			}
 			ApplyForm form = new  ApplyForm();
 			form.setApplyUserId(ins.getStartUserId());
 			Map<String, Object> map = new HashMap<String, Object>();

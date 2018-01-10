@@ -1,5 +1,6 @@
 package com.vacation.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vacation.app.form.ActivitiForm;
@@ -26,7 +26,7 @@ import com.vacation.app.form.ApproveForm;
 import com.vacation.app.service.ApplyDemoService;
 
 @Controller
-public class ApproveDemoController {
+public class ApproveDemoController extends BaseController {
 
 	public static final String CANDIDATE_GROUP_ID = "group0002";
 	
@@ -51,19 +51,20 @@ public class ApproveDemoController {
 	 * approve list
 	 * @param model
 	 * @param form
-	 * @param lang
 	 * @return
 	 */
 	@GetMapping("approve")
-	public String index(Model model, @ModelAttribute(value = "form") ApplyForm form,
-			@RequestParam(value="lang", required=false) String lang) {
+	public String index(Model model) {
 		String userId = applyService.getCurrentUserName();
 		List<ProcessInstance> instances = runtimeService.createProcessInstanceQuery().involvedUser(userId).list();
-		List<Task> tasks = taskService.createTaskQuery().taskCandidateUser(userId).active().list();
-		model.addAttribute("tasks", tasks);
+		List<Task> allTasks = new ArrayList<Task>();
+		for (ProcessInstance ins: instances) {
+			List<Task> tasks = taskService.createTaskQuery().processInstanceId(ins.getId()).taskCandidateUser(userId).list();	
+			allTasks.addAll(tasks);
+		}
+		model.addAttribute("tasks", allTasks);
 		logger.info("Number of process instances >>> " + instances.size());
-		logger.info("Number of tasks >>> " + tasks.size());
-		model.addAttribute("lang", lang);
+		logger.info("Number of tasks >>> " + allTasks.size());
 		return "demo/approve";
 	}
 	

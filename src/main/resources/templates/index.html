@@ -10,6 +10,19 @@
 <script th:inline="javascript">
 	/*<![CDATA[*/
 	$(function() {
+		// set default lang
+	   	var sl = [[${lang}]];
+        $('select option').each(function (e) {
+           if ($(this).val() === sl ) {
+               $(this).attr("selected","selected");
+           }
+        });
+		$("#lang").on('change', function(){
+	   		 var selVal = $(this).val();
+	   		 if (selVal) {
+	   			 window.location.replace('?lang=' + selVal);
+	   		 }
+	   	 });
 		$('input[name=logout]').bind('click', function(){
 			$("form[name=form]").submit();
 		});
@@ -25,20 +38,28 @@
 <body>
 	<div class="table-dark">
 		<div class="card" style="width: 80%;">
+			
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><a href="/apply">Vacation Apply</a></li>
-				<li class="list-group-item"><a href="/apply/list">Apply List</a></li>
-				<li class="list-group-item"><a href="/approve">Vacation Approve</a></li>
-				<li class="list-group-item"><a href="/register">Register</a></li>
-				<li class="list-group-item"><a href="/top">Top</a></li>
-				<li class="list-group-item"><a href="/task">Task</a></li>
+				<li class="list-group-item">
+					<select th:name="lang" id="lang">
+			            <option value="zh_CN" th:text="#{vacation.request.lang.zh}">Chinese</option>
+			            <option value="ja_JP" th:text="#{vacation.request.lang.ja}">Japanese</option>
+			            <option value="en_US" th:text="#{vacation.request.lang.en}">English</option>
+			        </select>
+				</li>
+				<li class="list-group-item"><a href="/apply" th:text="#{vacation.request.apply.title}">Vacation Apply</a></li>
+				<li class="list-group-item"><a href="/apply/list" th:text="#{vacation.request.apply.list}">Apply List</a></li>
+				<li class="list-group-item"><a href="/approve" th:text="#{vacation.request.approve.title}">Vacation Approve</a></li>
+				<li class="list-group-item"><a href="/register" th:text="#{vacation.request.index.register}">Register</a></li>
+				<li class="list-group-item"><a href="/top" th:text="#{vacation.request.index.top}">Top</a></li>
+				<li class="list-group-item"><a href="/task" th:text="#{vacation.request.index.task}">Task</a></li>
 				<hr/>
-				<li class="list-group-item"><font style="color: #428bca;">申請中: </font><span style="font-size:1.5rem;color:red;" th:text="${count}"></span></li>
-				<li class="list-group-item"><font style="color: #428bca;">承認済: </font><span style="font-size:1.5rem;color:red;" th:text="${finished}"></span></li>
+				<li class="list-group-item"><font style="color: #428bca;" th:text="#{vacation.request.index.applying}">申請中: </font><span style="font-size:1.5rem;color:red;" th:text="${count}"></span></li>
+				<li class="list-group-item"><font style="color: #428bca;" th:text="#{vacation.request.index.complete}">承認済: </font><span style="font-size:1.5rem;color:red;" th:text="${finished}"></span></li>
 			</ul>
 			<form name="form" th:action="@{logout}" method="post">
-				<input type="button" class="btn btn-primary" name="logout" value="logout" />
-				<input type="button" class="btn btn-primary" name="clear" value="clear" />
+				<input type="button" class="btn btn-primary" name="logout" th:value="#{vacation.request.button.logout}" />
+				<input type="button" class="btn btn-primary" name="clear" th:value="#{vacation.request.button.clear}"/>
 			</form>
 		</div>
 	</div>

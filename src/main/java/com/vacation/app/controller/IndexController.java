@@ -11,10 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class IndexController {
+public class IndexController extends BaseController {
 	
 	@Autowired
 	private RuntimeService runtimeService;
@@ -27,7 +28,7 @@ public class IndexController {
 	 * @return
 	 */
 	@RequestMapping(value={"/index", "/"})
-	public String index(Model model) {
+	public String index(Model model, @RequestParam(value = "lang", required = false) String lang) {
 		List<ProcessInstance> processInstances = runtimeService.createProcessInstanceQuery().active().list();
 		List<HistoricProcessInstance> historyInstances = historyService.createHistoricProcessInstanceQuery().finished().list();
 		
@@ -35,11 +36,12 @@ public class IndexController {
 		int finished = historyInstances.size();
 		model.addAttribute("count", count);
 		model.addAttribute("finished", finished);
+		model.addAttribute("lang", lang);
 		return "index";
 	}
 	
 	/**
-	 * clear vacation request
+	 * do clear vacation request
 	 * @return
 	 */
 	@PostMapping("/clear")

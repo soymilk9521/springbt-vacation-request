@@ -8,6 +8,7 @@ public class RegisterController {
 	
 	@RequestMapping("/register")
 	public String regiester() {
+		
 		return "register";
 	}
 }

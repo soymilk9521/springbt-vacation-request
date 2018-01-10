@@ -12,21 +12,6 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     $(function () {
-    	 $("#lang").on('change', function(){
-    		 var selVal = $(this).val();
-    		 if (selVal) {
-    			 window.location.replace('?lang=' + selVal);
-    		 }
-    	 });
-    	 
-    	 // set default lang
-    	 var sl = [[${lang}]];
-         $('select option').each(function (e) {
-            if ($(this).val() === sl ) {
-                $(this).attr("selected","selected");
-            }
-         });
-         
          // date picker
          $("#datepicker").datepicker({
              dateFormat: 'yy-mm-dd'
@@ -42,13 +27,7 @@
 <body>
 	<div class="content">
 		<h1 th:text="#{vacation.request.apply.title}"></h1>
-		
 		<form action="/apply" th:action="@{/apply}" th:object="${form}" method="post">
-			<select th:name="lang" id="lang">
-	            <option value="zh_CN">Chinese</option>
-	            <option value="ja_JP">Japanese</option>
-	            <option value="en_US">English</option>
-	        </select>
 			<input type="hidden" name="processInstanceId" th:value="*{processInstanceId}" />
 			<!-- ${form.property} and *{property} are the same way-->
 			<input type="text" th:field="*{numberOfDays}" th:value="*{numberOfDays}" placeholder="number of days"/><br/>
