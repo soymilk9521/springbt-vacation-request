@@ -11,6 +11,16 @@
 	<property name="databaseSchemaUpdate" value="true" />
 	<!-- 	The component that manages a thread pool to fire timers and other asynchronous tasks. -->
 	<property name="asyncExecutorActivate" value="true" />
+	
+	<!-- mail server configurations -->
+  	<property name="mailServerHost" value="smtp.lolipop.jp" />
+  	<property name="mailServerDefaultFrom" value="long.li@tlzs.co.jp" />
+  	<property name="mailServerPort" value="25" />
+  	<property name="mailServerUsername" value="long.li@tlzs.co.jp" />
+  	<property name="mailServerPassword" value="TLZS0819_Sxx1s" />
+  	<property name="mailServerUseSSL" value="false" />
+  	<property name="mailServerUseTLS" value="false" />
+  	
   </bean>
 	
   <!--   Mysql config -->
