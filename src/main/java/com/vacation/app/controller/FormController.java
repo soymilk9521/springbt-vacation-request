@@ -21,7 +21,6 @@ public class FormController {
 
 		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("test_form_key");
 		logger.info("process instance id >>> " + processInstance.getId());
-		
 		return "form";
 	}
 }
