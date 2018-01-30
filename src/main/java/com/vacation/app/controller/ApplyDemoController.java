@@ -11,7 +11,6 @@ import javax.validation.Valid;
 
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +25,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vacation.app.dao.ActIdUserDao;
 import com.vacation.app.form.ApplyForm;
 import com.vacation.app.service.ApplyDemoService;
 
@@ -48,12 +47,12 @@ public class ApplyDemoController extends BaseController {
 
 	@Autowired
 	private IdentityService identityService;
-
-	@Autowired
-	private TaskService taskService;
 	
 	@Autowired
     private ApplyDemoService applyService;
+	
+	@Autowired
+	private ActIdUserDao userDao;
 	
 	/**
 	 * vacation request apply page
@@ -91,8 +90,8 @@ public class ApplyDemoController extends BaseController {
 			Map<String, Object> vars = objMapper.convertValue(form, Map.class);
 			logger.info("vars >>> " + vars);
 			// set apply user
-			String userId = applyService.getCurrentUserName();
-			identityService.setAuthenticatedUserId(userId);
+//			String userId = applyService.getCurrentUserName();
+			identityService.setAuthenticatedUserId("admin");
 			// start apply process
 			if (StringUtils.isEmpty(form.getProcessInstanceId())) {
 				ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(PROCESS_KEY, vars);
@@ -128,7 +127,8 @@ public class ApplyDemoController extends BaseController {
 	 */
 	@GetMapping("/apply/list")
 	public String list(Model model) {
-		String userId = applyService.getCurrentUserName();
+//		String userId = applyService.getCurrentUserName();
+		String userId = "admin";
 		List<ProcessInstance> processInstances = runtimeService.createProcessInstanceQuery()
 				.active().involvedUser(userId).list();		
 		List<ApplyForm> list = new ArrayList<ApplyForm>();

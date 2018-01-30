@@ -21,14 +21,8 @@ import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.Deployment;
 import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.vacation.app.dao.ActIdUserDao;
 
 public class TestEvent {
-
-	@Autowired
-	private ActIdUserDao userDao;
 	
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();

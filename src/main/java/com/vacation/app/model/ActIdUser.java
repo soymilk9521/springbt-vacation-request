@@ -1,7 +1,5 @@
 package com.vacation.app.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,9 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 
 /**
@@ -28,7 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Table(name="act_id_user")
 @NamedQuery(name="ActIdUser.findAll", query="SELECT a FROM ActIdUser a")
-public class ActIdUser extends BaseEntity implements UserDetails {
+public class ActIdUser extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -133,45 +128,5 @@ public class ActIdUser extends BaseEntity implements UserDetails {
 	public void setActIdGroups(List<ActIdGroup> actIdGroups) {
 		this.actIdGroups = actIdGroups;
 	}
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-        List<ActIdGroup> roles = this.getActIdGroups();
-        for (ActIdGroup role : roles) {
-            auths.add(new SimpleGrantedAuthority(role.getName()));
-        }
-        return auths;
-	}
-
-	@Override
-	public String getPassword() {
-		return this.getPwd();
-	}
-
-	@Override
-	public String getUsername() {
-		return this.getId();
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
-
+	
 }

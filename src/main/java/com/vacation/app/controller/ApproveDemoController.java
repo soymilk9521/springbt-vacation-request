@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vacation.app.form.ActivitiForm;
-import com.vacation.app.form.ApplyForm;
 import com.vacation.app.form.ApproveForm;
 import com.vacation.app.service.ApplyDemoService;
 
@@ -55,7 +54,8 @@ public class ApproveDemoController extends BaseController {
 	 */
 	@GetMapping("approve")
 	public String index(Model model) {
-		String userId = applyService.getCurrentUserName();
+//		String userId = applyService.getCurrentUserName();
+		String userId ="admin";
 		List<ProcessInstance> instances = runtimeService.createProcessInstanceQuery().involvedUser(userId).list();
 		List<Task> allTasks = new ArrayList<Task>();
 		for (ProcessInstance ins: instances) {
@@ -91,7 +91,8 @@ public class ApproveDemoController extends BaseController {
 	@SuppressWarnings("unchecked")
 	@PostMapping("approve")
 	public String approve(Model model, @ModelAttribute(value = "form") ApproveForm form) {
-		String userId = applyService.getCurrentUserName();
+//		String userId = applyService.getCurrentUserName();
+		String userId ="admin";
 		if (!"".equals(form.getTaskId())){
 			ObjectMapper objMapper = new ObjectMapper();
 			Map<String, Object> vars = objMapper.convertValue(form, Map.class);
